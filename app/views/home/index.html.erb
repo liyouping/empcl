@@ -1,0 +1,87 @@
+ <div class="row">
+
+    <div class="col-md-1 col-xs-1"></div>
+    <div class="col-md-10 col-xs-10">
+
+      <div class="row">
+
+        <div class="col-md-12 col-xs-12 news-bg"><span><%= t("news")%></span></div>
+        <div class="col-md-12 col-xs-12 news-list">
+          <li><a href="/news-view/33"><%= t("home_pg.new.item1") %></a></li>
+          <li><a href="/news-view/32"><%= t("home_pg.new.item2") %></a></li>
+          <li><a href="/news-view/31"><%= t("home_pg.new.item3") %></a></li>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="col-md-1 col-xs-1"></div>
+  </div>
+
+
+  <!--产品开始-->
+
+  <div class="row rowtop">
+
+    <div class="col-md-1 col-xs-1"></div>
+    <div class="col-md-10 col-xs-10">
+
+
+      <div class="row">
+
+        <div class="<%= getlocal == "en" ? "col-md-4" : "col-md-3" %> col-xs-12">
+          <div class="pro">
+            <div class="pro-tbg"><%= image_tag "icon1.png"%></div>
+            <div class="pro-dbg">
+              <span class="t"><%= t("home_pg.company") %></span>
+              <span class="tz"><%= t("home_pg.company_info") %></span>
+              <span class="btn"><%= link_to t("home_pg.detail"),root_url %></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="<%= getlocal == "en" ? "col-md-4" : "col-md-3" %> col-xs-12">
+
+          <div class="pro">
+            <div class="pro-tbg"><%= image_tag "icon2.png"%></div>
+            <div class="pro-dbg">
+              <span class="t"><%= t("home_pg.product_and_application") %></span>
+              <span class="tz"><%= t("home_pg.product_and_application_info") %></span>
+              <span class="btn"><%= link_to t("home_pg.detail"),root_url %></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="<%= getlocal == "en" ? "col-md-4" : "col-md-3" %> col-xs-12">
+
+          <div class="pro">
+            <div class="pro-tbg"><%= image_tag "icon3.png"%></div>
+            <div class="pro-dbg">
+              <span class="t"><%= t("home_pg.sustainability") %></span>
+              <span class="tz"><%= t("home_pg.sustainability_info") %></span>
+              <span class="btn"><%= link_to t("home_pg.detail"),root_url %></span>
+            </div>
+          </div>
+
+        </div>
+
+        <% if getlocal == "zh_CN" %>
+        <div class="col-md-3 col-xs-12">
+          <div class="pro">
+            <div class="pro-tbg"><%= image_tag "icon4.png"%></div>
+            <div class="pro-dbg">
+              <span class="t">招贤纳士</span>
+              <span class="tz">每一名普什人，都是企业的推动者。选择普什，我们与你一起努力推动未来</span>
+              <span class="btn"><a href="/">详细信息</a></span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+
+      </div>
+
+    </div>
+    <div class="col-md-1 col-xs-1"></div>
+  </div>

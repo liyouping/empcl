@@ -1,0 +1,42 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  version: "中文版"
+  home: "Home"
+  product_and_application: "Product"
+  product: "Product"
+  application: "Application"
+  partner: "Cooperative partner"
+  contact: "Contact US"
+  news: "News"
+  home_pg:
+    new:
+      item1: "Sichuan Pashtoon cellulose acetate limited liability company 2016 annual quality credit report."
+      item2: "Raw material supplier selection announcement."
+      item3: "Waste materials disposal supplier selection announcement."
+    detail: "Detail"
+    company: "Company profile"
+    company_info: "Market is first, technology is foundation, competition makes progress, to be the leader of cellulose acetate industry of China."
+    product_and_application: "Product"
+    product_and_application_info: "Mastering core technologies,developing new products actively, innovating continually ,customer requirements have been satisfied."
+    sustainability: "Sustainability"
+    sustainability_info: "The concept of sustainability has been rooted in our all production and business activities，to benefit future generations."

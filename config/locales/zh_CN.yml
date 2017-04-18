@@ -1,0 +1,42 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+zh_CN:
+  version: "English Version"
+  home: "公司概况"
+  product_and_application: "产品及应用"
+  product: "产品"
+  application: "应用"
+  partner: "合作伙伴"
+  contact: "联系我们"
+  news: "最新动态"
+  home_pg:
+      new:
+        item1: "四川普什醋酸纤维素有限责任公司2016年度质量信用报告"
+        item2: "原辅材料供应商遴选公告"
+        item3: "废旧物资处置供应商遴选公告"
+      detail: "详细信息"
+      company: "公司概况"
+      company_info: "市场第一、科技立企、竞争求进、长期利益，做中国醋酸纤维素产业的领军者"
+      product_and_application: "产品及应用"
+      product_and_application_info: "掌握核心技术，积极开发新产品及应用，不断创新升级，持续满足顾客要求"
+      sustainability: "可持续发展"
+      sustainability_info: "可持续发展理念贯穿所有生产经营活动中，为这一代创造价值，也为下一代创造机会"
