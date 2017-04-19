@@ -23,11 +23,11 @@
                 </ul>
             </li>
             <li><%= link_to t("partner"), "#" %></li>
-            <li><%= link_to t("contact"), contact_home_index_path %></li>
+            <li class="<%=  @select_menu == 'contact' ? 'active' : ''%>"><%= link_to t("contact"), contact_home_index_path %></li>
             <% if getlocal == "zh_CN" %>
-              <li><%= link_to t("version"), "javascript:void(0);",{id: "change-version",onclick: "location.href='#{root_path(locale: "en")}'"} %></li>
+              <li><%= link_to t("version"), root_path(locale: "en"),id: "change-version" %></li>
             <% else %>
-              <li><%= link_to t("version"), "javascript:void(0);",{id: "change-version",onclick: "location.href='#{root_path(locale: "zh_CN")}'"} %></li>
+              <li><%= link_to t("version"), root_path(locale: "zh_CN"),id: "change-version" %></li>
             <% end %>
         </ul>
     </div>
