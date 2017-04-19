@@ -1,0 +1,16 @@
+en:
+  activerecord: 
+    models:
+      message: "Message"
+      msg_type: "Message Type"
+    attrenibutes:
+      message:
+        id: "ID"
+        name: "Name"
+        company: "Company / Organization Name"
+        tel_num: "Tel Num"
+        email: "Email"
+        msg_type_id: "Theme"
+        content: "Content"
+      msg_type:
+        name: "Type Name"

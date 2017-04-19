@@ -1,3 +1,6 @@
+<!--消息通知-->
+<%= render partial: 'common/notice_or_error' %>
+
 <div class="row">
   <div class="col-md-1 col-xs-1"></div>
   <div class="col-md-10 col-xs-10">
@@ -7,44 +10,44 @@
       <div class="row" style="margin-top:45px;">
         <div class="col-md-6">
           <!-- 反馈表 -->
-          <form id="feedback" role="form" method="post" novalidate="novalidate" class="fv-form fv-form-bootstrap"><button type="submit" class="fv-hidden-submit" style="display: none; width: 0px; height: 0px;"></button>
-            <input type="hidden" name="_token" value="NqnZaRnMeBxgnc8OxIfjktzqak1QFDS4smmcqtAd">
+          <%= form_for @message, url: send_msg_home_index_path, id: 'contactForm' do |f| %>
+            
             <span class="help-block">我们致力于提供最高水平的客户服务。请填写以下表单，详细描述您的需求，然后点击（提交）按钮。我们期待能为您提供帮助。</span>
             <br>
-            <div class="form-group">
-              <label>姓名</label>
-              <input type="text" name="name" class="form-control" placeholder="" data-fv-notempty="true" data-fv-notempty-message="必填项" data-fv-field="name">
-              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="name" data-fv-result="NOT_VALIDATED" style="display: none;">必填项</small></div>
-            <div class="form-group">
+            <div class="form-group <%= has_error(@message,'name')%>">
+              <label>姓名<span class="pre-flag">*</span></label>
+              <%= f.text_field :name,{class:'form-control', placeholder:'必填'} %>
+              <label for="message_name" class="control-label"><%= @message.errors["name"] %></label>
+            </div>
+            <div class="form-group <%= has_error(@message,'company')%>">
               <label>公司/机构名称</label>
-              <input type="text" name="company" class="form-control" placeholder="">
+              <%= f.text_field :company,{class:'form-control', placeholder:'选填'} %>
+              <label for="message_company" class="control-label"><%= @message.errors["company"] %></label>
+            </div>
+            <div class="form-group <%= has_error(@message,'tel_num')%>">
+              <label>联络电话<span class="pre-flag">*</span></label>
+              <%= f.text_field :tel_num,{class:'form-control', placeholder:'必填'} %>
+              <label for="message_tel_num" class="control-label"><%= @message.errors["tel_num"] %></label>
+            </div>
+            <div class="form-group <%= has_error(@message,'email')%>">
+              <label>电子邮件<span class="pre-flag">*</span></label>
+              <%= f.text_field :email,{class:'form-control', placeholder:'必填'} %>
+              <label for="message_email" class="control-label"><%= @message.errors["email"] %></label>
+            </div>
+            <div class="form-group <%= has_error(@message,'msg_type_id')%>">
+              <label>主题<span class="pre-flag">*</span></label>
+              <%= f.select :msg_type_id, MsgType.all.collect{|m| [m.name, m.id]}.unshift(["请选择",""]),{}, class:"form-control" %>
+              <label class="control-label" for="message_msg_type_id"><%= @message.errors["msg_type_id"] %></label>
+            </div>
+            <div class="form-group <%= has_error(@message,'content')%>">
+              <label>详细内容<span class="pre-flag">*</span></label>
+              <%= f.text_area :content,{rows:10,placeholder:'必填',class: 'form-control'} %>
+              <label class="control-label" for="message_content"><%= @message.errors["content"] %></label>
             </div>
             <div class="form-group">
-              <label>联络电话</label>
-              <input type="text" name="telephone" class="form-control" placeholder="">
+              <button type="submit" class="btn btn-default mb15">提交</button>
             </div>
-            <div class="form-group">
-              <label>电子邮件</label>
-              <input type="email" name="email" class="form-control" placeholder="" data-fv-notempty="true" data-fv-notempty-message="必填项" data-fv-emailaddress-message="邮箱格式不正确" data-fv-field="email">
-              <small class="help-block" data-fv-validator="emailAddress" data-fv-for="email" data-fv-result="NOT_VALIDATED" style="display: none;">邮箱格式不正确</small><small class="help-block" data-fv-validator="notEmpty" data-fv-for="email" data-fv-result="NOT_VALIDATED" style="display: none;">必填项</small></div>
-            <div class="form-group">
-              <label>主题</label>
-              <select name="subject" class="form-control" data-fv-notempty="true" data-fv-notempty-message="必选项" data-fv-field="subject">
-                <option value="">请选择</option>
-                <option value="产品咨询">产品咨询</option>
-                <option value="商务合作">商务合作</option>
-                <option value="网站建议">网站建议</option>
-                <option value="投诉举报">投诉举报</option>
-                <option value="其他">其他</option>
-              </select>
-              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="subject" data-fv-result="NOT_VALIDATED" style="display: none;">必选项</small></div>
-            <div class="form-group">
-              <label>详细内容</label>
-              <textarea name="content" class="form-control" rows="10" style="height:auto;" data-fv-notempty="true" data-fv-notempty-message="必填项" data-fv-field="content"></textarea>
-              <small class="help-block" data-fv-validator="notEmpty" data-fv-for="content" data-fv-result="NOT_VALIDATED" style="display: none;">必填项</small></div>
-
-            <button type="submit" class="btn btn-default">提交</button>
-          </form>
+          <% end %>
         </div>
 
         <div class="col-md-5 col-md-offset-1">

@@ -5,3 +5,4 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+MsgType.create([{name:'产品咨询'},{name: '商务合作'},{name: '网站建设'},{name: '投诉举报'},{name: '其他'}])

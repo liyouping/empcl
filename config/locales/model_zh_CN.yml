@@ -1,0 +1,16 @@
+zh_CN:
+  activerecord: 
+    models:
+      message: "留言消息"
+      msg_type: "消息类型"
+    attributes:
+      message:
+        id: "ID"
+        name: "姓名"
+        company: "公司/机构名称"
+        tel_num: "联络电话"
+        email: "电子邮件"
+        msg_type_id: "主题"
+        content: "内容"
+      msg_type:
+        name: "类型名称"

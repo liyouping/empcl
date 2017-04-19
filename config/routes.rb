@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :home do
       collection do
         get 'contact'
+        post 'send_msg'
       end
     end
    end
