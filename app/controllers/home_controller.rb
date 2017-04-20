@@ -1,4 +1,4 @@
-class HomeController < ApplicationController
+class HomeController < BaseController
 	
   def index
   	@select_menu = "home"
@@ -17,12 +17,14 @@ class HomeController < ApplicationController
       end
       redirect_to action: 'contact'
     else
+      # @errors = @message.errors.messages.keys.map(&:to_s).join(",")
+      @errors = @message.errors.as_json(full_messages: true).to_json
+
       render :contact
     end
   end
 
   private
-
   def message_params
     params.require(:message).permit(:name, :tel_num, :email, :company,:msg_type_id, :content)
   end

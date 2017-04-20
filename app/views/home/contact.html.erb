@@ -14,40 +14,40 @@
             
             <span class="help-block">我们致力于提供最高水平的客户服务。请填写以下表单，详细描述您的需求，然后点击（提交）按钮。我们期待能为您提供帮助。</span>
             <br>
-            <div class="form-group <%= has_error(@message,'name')%>">
+            <div class="form-group">
               <label>姓名<span class="pre-flag">*</span></label>
               <%= f.text_field :name,{class:'form-control', placeholder:'必填'} %>
-              <label for="message_name" class="control-label"><%= @message.errors["name"] %></label>
+              <label for="message_name" class="control-label"><%#= @message.errors.full_messages_for(:name)[0] %></label>
             </div>
-            <div class="form-group <%= has_error(@message,'company')%>">
+            <div class="form-group">
               <label>公司/机构名称</label>
               <%= f.text_field :company,{class:'form-control', placeholder:'选填'} %>
-              <label for="message_company" class="control-label"><%= @message.errors["company"] %></label>
             </div>
-            <div class="form-group <%= has_error(@message,'tel_num')%>">
+            <div class="form-group">
               <label>联络电话<span class="pre-flag">*</span></label>
               <%= f.text_field :tel_num,{class:'form-control', placeholder:'必填'} %>
-              <label for="message_tel_num" class="control-label"><%= @message.errors["tel_num"] %></label>
+              <label for="message_tel_num" class="control-label"><%#= @message.errors.full_messages_for(:tel_num)[0] %></label>
             </div>
-            <div class="form-group <%= has_error(@message,'email')%>">
+            <div class="form-group">
               <label>电子邮件<span class="pre-flag">*</span></label>
               <%= f.text_field :email,{class:'form-control', placeholder:'必填'} %>
-              <label for="message_email" class="control-label"><%= @message.errors["email"] %></label>
+              <label for="message_email" class="control-label"><%#= @message.errors.full_messages_for(:email)[0] %></label>
             </div>
-            <div class="form-group <%= has_error(@message,'msg_type_id')%>">
+            <div class="form-group">
               <label>主题<span class="pre-flag">*</span></label>
-              <%= f.select :msg_type_id, MsgType.all.collect{|m| [m.name, m.id]}.unshift(["请选择",""]),{}, class:"form-control" %>
-              <label class="control-label" for="message_msg_type_id"><%= @message.errors["msg_type_id"] %></label>
+              <%= f.select :msg_type_id, MsgType.all.collect{|m| [ (getlocal == "en"?m.en_name: m.name), m.id]}.unshift(["请选择",""]),{}, class:"form-control" %>
+              <label class="control-label" for="message_msg_type_id"><%#= @message.errors.full_messages_for(:msg_type_id)[0] %></label>
             </div>
-            <div class="form-group <%= has_error(@message,'content')%>">
+            <div class="form-group">
               <label>详细内容<span class="pre-flag">*</span></label>
               <%= f.text_area :content,{rows:10,placeholder:'必填',class: 'form-control'} %>
-              <label class="control-label" for="message_content"><%= @message.errors["content"] %></label>
+              <label class="control-label" for="message_content"><%#= @message.errors.full_messages_for(:content)[0] %></label>
             </div>
             <div class="form-group">
               <button type="submit" class="btn btn-default mb15">提交</button>
             </div>
           <% end %>
+          <input type="hidden" id="errorsKey" value="<%= @errors %>">
         </div>
 
         <div class="col-md-5 col-md-offset-1">

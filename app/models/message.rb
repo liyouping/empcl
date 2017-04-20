@@ -1,4 +1,8 @@
 class Message < ApplicationRecord
-  validates_presence_of :name,:tel_num,:email,:msg_type_id
+  validates_presence_of :name,:tel_num,:email,:content
+
+  validates_each :msg_type_id do |record, attr, value|
+    record.errors.add(attr,I18n.t("helpers.select.prompt")) if value.blank?
+  end
 
 end

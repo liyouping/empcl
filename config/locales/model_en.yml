@@ -3,7 +3,7 @@ en:
     models:
       message: "Message"
       msg_type: "Message Type"
-    attrenibutes:
+    attributes:
       message:
         id: "ID"
         name: "Name"

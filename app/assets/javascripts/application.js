@@ -15,3 +15,20 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
+
+$(document).ready(function () {
+    if($("#errorsKey") != undefined){
+        var errorsKey = $("#errorsKey").val();
+        if(errorsKey != ""){
+            // var errorKeyList = errorsKey.split(",");
+            // for(var i=0;i<errorKeyList.length;i++){
+            //     $("input[name*='["+errorKeyList[i]+"]'],select[name*='["+errorKeyList[i]+"]'],textarea[name*='["+errorKeyList[i]+"]']").parent().parent().addClass("has-error");
+            // }
+            var errorList = JSON.parse(errorsKey);
+            for(var key in errorList){
+                $("input[name*='["+key+"]'],select[name*='["+key+"]'],textarea[name*='["+key+"]']").parent().parent().addClass("has-error");
+                $("input[name*='["+key+"]'],select[name*='["+key+"]'],textarea[name*='["+key+"]']").parent().next("label").text(errorList[key][0]);
+            }
+        }
+    }
+});
