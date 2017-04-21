@@ -35,7 +35,7 @@ gem 'turbolinks', '~> 5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 #使用bootstrap
-gem 'bootstrap-sass', '~> 3.2.0.2'
+gem 'bootstrap-sass', '~> 3.3.6'
 #国际化
 gem 'rails-i18n', '~> 5.0.0'
 #这个Gem能够把用户请求发送过来的请求头中把Accept-Language提取出来放在一个数组中。即就是能检测出用户浏览器中设置的语言偏好。

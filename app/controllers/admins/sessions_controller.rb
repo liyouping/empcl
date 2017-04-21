@@ -1,5 +1,5 @@
-class Admin::SessionsController < Devise::SessionsController
-  layout 'admin'
+class Admins::SessionsController < Devise::SessionsController
+  layout "admin"
 # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
@@ -8,10 +8,9 @@ class Admin::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    super
-    pp "-------admin---",admin_sign_in?
-  end
+  # def create
+  #   super
+  # end
 
   # DELETE /resource/sign_out
   # def destroy

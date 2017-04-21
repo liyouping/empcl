@@ -7,6 +7,7 @@ class HomeController < BaseController
   def contact
   	@select_menu = "contact"
     @message = Message.new
+
   end
 
   def send_msg

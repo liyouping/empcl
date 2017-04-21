@@ -1,4 +1,5 @@
-class Admin::UnlocksController < Devise::UnlocksController
+class Admins::UnlocksController < Devise::UnlocksController
+  layout "admin"
   # GET /resource/unlock/new
   # def new
   #   super

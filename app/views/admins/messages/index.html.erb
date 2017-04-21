@@ -1,0 +1,56 @@
+<div class="row">
+<% if admin_signed_in? %> <!-- Provided by devise -->
+    <div style="float:right">
+      <%= current_admin.email %> |
+      <%= link_to '用户信息', edit_admin_registration_path %> |
+      <%= link_to '退出登录', destroy_admin_session_path, :method => :delete %> |
+    </div>
+<% end %>
+<% unless admin_signed_in? %>
+    <div style="float:right">
+      <%= link_to '注册', new_admin_registration_path %> |
+      <%= link_to '登录', new_admin_session_path %>
+    </div>
+<% end %>
+</div>
+
+<div class="row">
+  <div class="col-md-1 col-xs-0"></div>
+  <div class="col-md-10 col-xs-12">
+    <div class="table-responsive data-list">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>姓名</th>
+          <th>公司/组织名</th>
+          <th>电话</th>
+          <th>邮件</th>
+          <th>留言类型</th>
+          <th>留言时间</th>
+          <th>留言内容</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @messages.each do |msg| %>
+            <tr>
+              <td><%= msg.name %></td>
+              <td><%= msg.company %></td>
+              <td><%= msg.tel_num %></td>
+              <td><%= msg.email %></td>
+              <td><%= msg.msg_type.name %></td>
+              <td><%= fmt_date(msg.created_at) %></td>
+              <td><%= msg.content %></td>
+              <td>
+                <%= link_to '查看', admins_message_path(msg), class: "btn btn-primary" %>
+                <%= link_to '修改', edit_admins_message_path(msg), class: "btn btn-primary" %>
+                <%= link_to '删除', admins_message_path(msg), method: :delete, data: {confirm: '确定要删除?'}, class: "btn btn-danger" %>
+              </td>
+            </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="col-md-1 col-xs-0"></div>
+</div>

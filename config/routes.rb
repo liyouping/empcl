@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    # devise_for :admins, controllers: {
-    #     sessions: 'admin/sessions'
-    # }
-    root 'home#index'
-    devise_for :admins, path: '', path_names: { sign_in: 'login', sign_out: 'logout', password: 'secret', confirmation: 'verification', unlock: 'unblock', registration: 'register', sign_up: 'cmon_let_me_in' }
+  devise_for :admins, controllers: { sessions: 'admins/sessions' },path: 'admin'
+  namespace :admins ,path: 'admin' do
+    root 'messages#index'
+    resources :messages
   end
 
    scope "(:locale)", locale: /en|zh_CN/ do

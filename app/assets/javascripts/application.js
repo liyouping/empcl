@@ -17,7 +17,7 @@
 //= require bootstrap-sprockets
 
 $(document).ready(function () {
-    if($("#errorsKey") != undefined){
+    if($("#errorsKey")[0] != undefined){
         var errorsKey = $("#errorsKey").val();
         if(errorsKey != ""){
             // var errorKeyList = errorsKey.split(",");

@@ -10,4 +10,8 @@ module ApplicationHelper
       
     end
   end
+
+  def fmt_date(date_str,fmt='%Y-%m-%d %H:%M:%S')
+    date_str.strftime(fmt)
+  end
 end
