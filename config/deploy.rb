@@ -100,13 +100,13 @@ task :deploy => :environment do
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
-    invoke :'rails:assets_precompile'
+    # invoke :'rails:assets_precompile'
     # invoke :'deploy:cleanup'
 
     to :launch do
       queue "mkdir -p #{deploy_to}/#{current_path}/tmp/"
       #queue "touch #{deploy_to}/#{current_path}/tmp/restart.txt"
-      queue "pumactl -F  #{deploy_to}/#{current_path}/config/puma.rb  start"
+      queue "pumactl -F  #{deploy_to}/#{current_path}/config/puma.rb  restart"
       invoke :'deploy:cleanup'
       # invoke :'whenever:update'
     end

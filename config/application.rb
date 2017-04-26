@@ -24,6 +24,7 @@ module Empcl
     config.my_config = config_for(:my_config)
 
     config.eager_load_paths += %W(#{Rails.root.join}/lib #{Rails.root.join('app', '*')})
+    config.active_record.raise_in_transactional_callbacks = true
 
     # Bower asset paths
     root.join('vendor', 'assets', 'bower_components').to_s.tap do |bower_path|
