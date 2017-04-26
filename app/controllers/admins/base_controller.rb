@@ -6,7 +6,7 @@ class Admins::BaseController < ApplicationController
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_in) do |params|
+    devise_parameter_sanitizer.permit(:sign_up) do |params|
       # params.permit(:tel_num, :email)
       devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :tel_num])
     end

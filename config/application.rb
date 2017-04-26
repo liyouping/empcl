@@ -21,6 +21,8 @@ module Empcl
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.my_config = config_for(:my_config)
+
     config.eager_load_paths += %W(#{Rails.root.join}/lib #{Rails.root.join('app', '*')})
 
     # Bower asset paths
@@ -37,10 +39,12 @@ module Empcl
     # Add the fonts path
     config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
-	config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+	  config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
     # Precompile additional assets
     config.assets.precompile += %w( .svg .eot .woff .ttf )
 
+    Rails.application.config.assets.precompile += %w( admins/admins.css )
+    Rails.application.config.assets.precompile += %w( admins/admins.js )
     #国际化
     # 指定 I18n 库搜索翻译文件的路径
     I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]

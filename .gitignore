@@ -13,6 +13,7 @@
 !/log/.keep
 !/tmp/.keep
 /config/database.yml
+/config/my_config.yml
 .idea/*
 
 # Ignore Byebug command history file.

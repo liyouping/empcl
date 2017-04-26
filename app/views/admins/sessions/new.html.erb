@@ -9,56 +9,91 @@
                                      initial-scale=1.0,
                                      maximum-scale=1.0,
                                      user-scalable=no">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'admins/admins', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'admins/admins', 'data-turbolinks-track': 'reload' %>
 
 </head>
 
 <body>
-<div class="top-content">
+<div class="middle-box text-center loginscreen animated fadeInDown">
+  <div>
+    <div>
 
-  <div class="inner-bg">
-    <div class="container">
-<div class="row">
-  <div class="col-sm-6 col-sm-offset-3 form-box">
-    <div class="form-top">
-      <div class="form-top-left">
-        <h3>Login to our site</h3>
-        <p>Enter your username and password to log on:</p>
-      </div>
-      <div class="form-top-right">
-        <i class="fa fa-key"></i>
-      </div>
+      <h1 class="logo-name">IN+</h1>
+
     </div>
-<%= form_for(resource, as: resource_name, url: session_path(resource_name),class: "login-form") do |f| %>
-  <div class="form-group">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: "form-control" %>
-  </div>
+    <h3>Welcome to IN+</h3>
+    <p>Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+      <!--Continually expanded and constantly improved Inspinia Admin Them (IN+)-->
+    </p>
+    <p>Login in. To see it in action.</p>
+    <form class="m-t" role="form" action="index.html">
+      <div class="form-group">
+        <input type="email" class="form-control" placeholder="Username" required="">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" required="">
+      </div>
+      <button type="submit" class="btn btn-primary block full-width m-b">Login</button>
 
-  <div class="form-group">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off", class: "form-control"  %>
+      <a href="#">
+        <small>Forgot password?</small>
+      </a>
+      <p class="text-muted text-center">
+        <small>Do not have an account?</small>
+      </p>
+      <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
+    </form>
+    <p class="m-t">
+      <small>Inspinia we app framework base on Bootstrap 3 © 2014</small>
+    </p>
   </div>
+</div>
+<% if 1 >2 %>
+<!--<div class="top-content">-->
 
-  <% if devise_mapping.rememberable? -%>
-    <div class="form-group">
-      <%= f.check_box :remember_me,class: "form-control"  %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
+  <!--<div class="inner-bg">-->
+    <!--<div class="container">-->
+      <!--<div class="row">-->
+        <!--<div class="col-sm-6 col-sm-offset-3 form-box">-->
+          <!--<div class="form-top">-->
+            <!--<div class="form-top-left">-->
+              <!--<h3>Login to our site</h3>-->
+              <!--<p>Enter your username and password to log on:</p>-->
+            <!--</div>-->
+            <!--<div class="form-top-right">-->
+              <!--<i class="fa fa-key"></i>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "login-form") do |f| %>-->
+              <!--<div class="form-group">-->
+                <%= f.label :email %><br/>
+                <!--<%= f.email_field :email, autofocus: true, class: "form-control" %>-->
+              <!--</div>-->
 
-  <div class="actions">
-    <%= f.submit "Log in" , class: "btn" %>
-  </div>
+              <!--<div class="form-group">-->
+                <%= f.label :password %><br/>
+                <!--<%= f.password_field :password, autocomplete: "off", class: "form-control" %>-->
+              <!--</div>-->
+
+              <!--<% if devise_mapping.rememberable? -%>-->
+                  <!--<div class="form-group">-->
+                    <!--<%= f.check_box :remember_me, class: "form-control" %>-->
+                    <!--<%= f.label :remember_me %>-->
+                  <!--</div>-->
+              <!--<% end -%>-->
+
+              <!--<div class="actions">-->
+                <!--<%= f.submit "Log in", class: "btn" %>-->
+              <!--</div>-->
+          <!--<% end %>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
 <% end %>
-  </div>
 </div>
-</div>
-  </div>
-</div>
-</div>
-</body>
 </body>
 </html>
 <%#= render "admins/shared/links" %>
@@ -72,14 +107,14 @@
   /*
    Form validation
    */
-  $('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('focus', function() {
+  $('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('focus', function () {
     $(this).removeClass('input-error');
   });
 
-  $('.login-form').on('submit', function(e) {
+  $('.login-form').on('submit', function (e) {
 
-    $(this).find('input[type="text"], input[type="password"], textarea').each(function(){
-      if( $(this).val() == "" ) {
+    $(this).find('input[type="text"], input[type="password"], textarea').each(function () {
+      if ($(this).val() == "") {
         e.preventDefault();
         $(this).addClass('input-error');
       }
