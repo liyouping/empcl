@@ -44,9 +44,9 @@ ActiveRecord::Schema.define(version: 20170420072715) do
 
   create_table "msg_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "name"
+    t.string   "en_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "en_name"
   end
 
 end

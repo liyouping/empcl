@@ -1,5 +1,5 @@
 class Admins::SessionsController < Devise::SessionsController
-  layout "admin"
+  layout "login"
   # before_action :authenticate_admin!  ,except: :new
 
 

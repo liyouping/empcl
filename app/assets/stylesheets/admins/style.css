@@ -1,0 +1,231 @@
+/*来源http://www.jq22.com/jquery-info13004*/
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+body,
+html {
+  height: 100%;
+  background-color: white;
+}
+
+
+.nav .open > a {
+  background-color: transparent;
+}
+.nav .open > a:hover {
+  background-color: transparent;
+}
+.nav .open > a:focus {
+  background-color: transparent;
+}
+/*-- top-nav ---*/
+.top-nav{
+    background-color: #f3f3f4;
+    position: fixed;
+    top: 0;
+    height: 60px;
+    width: 100%;
+    z-index: 999;
+    color: #999c9e;
+    padding: 14px 15px;
+
+}
+.navbar-r{
+    float: right;
+    list-style: none;
+}
+.navbar-r  li{
+    display: inline-block;
+    list-style: none;
+    float: left;
+    margin: 0 5px;
+}
+ul{
+    list-style-type: none;
+}
+li{
+    list-style: none;
+}
+/*-------------------------------*/
+/*           Wrappers            */
+/*-------------------------------*/
+#wrapper {
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  padding-left: 0;
+  transition: all 0.5s ease;
+    background-color: white;
+}
+#wrapper.toggled {
+  /*padding-left: 220px;*/
+}
+#wrapper.toggled #sidebar-wrapper {
+  width: 220px;
+}
+#wrapper.toggled #page-content-wrapper {
+  margin-left: 220px;
+  /*position: absolute;*/
+}
+#wrapper.toggled #page-content-wrapper .top-nav{
+    /*padding-right: 235px;*/
+ /*padding-left: 220px;*/
+}
+#sidebar-wrapper {
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  -webkit-transition: all 0.5s ease;
+  background: #2f4050;
+  height: 100%;
+  /*left: 220px;*/
+  /*margin-left: -220px;*/
+  overflow-x: hidden;
+  overflow-y: auto;
+  transition: all 0.5s ease;
+  width: 0;
+  /*z-index: 1000;*/
+}
+#sidebar-wrapper::-webkit-scrollbar {
+  display: none;
+}
+#page-content-wrapper {
+  padding-top: 70px;
+  /*width: 100%;*/
+
+}
+/*-------------------------------*/
+/*     Sidebar nav styles        */
+/*-------------------------------*/
+.sidebar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  width: 220px;
+}
+.sidebar-nav li {
+  display: inline-block;
+  line-height: 20px;
+  position: relative;
+  width: 100%;
+}
+.sidebar-nav li:before {
+  background-color: #1c1c1c;
+  content: '';
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  -webkit-transition: width 0.2s ease-in;
+  transition: width 0.2s ease-in;
+  width: 3px;
+  z-index: -1;
+}
+.sidebar-nav li:first-child a {
+  background-color: #2f4050;
+  color: #ffffff;
+}
+
+
+.sidebar-nav li a {
+  color: #a7b1c2;
+  display: block;
+  padding: 10px 15px 10px 30px;
+  text-decoration: none;
+}
+.sidebar-nav li.open:hover before {
+  -webkit-transition: width 0.2s ease-in;
+  transition: width 0.2s ease-in;
+  width: 100%;
+}
+.sidebar-nav .dropdown-menu {
+  background-color: #293846;
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+}
+.dropdown-menu > li > a{
+    color: #a7b1c2!important;
+}
+.dropdown-menu > li > a:hover{
+    color: #fff!important;
+}
+.nav > li > a:hover, .nav > li > a:focus{
+    background-color: transparent!important;
+}
+.sidebar-nav li a:hover,
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus,
+.sidebar-nav li.open a:hover,
+.sidebar-nav li.open a:active,
+.sidebar-nav li.open a:focus {
+  background-color: transparent;
+  color: #ffffff;
+  text-decoration: none;
+}
+.sidebar-nav > .sidebar-brand {
+  font-size: 20px;
+  height: 65px;
+  line-height: 44px;
+}
+/*-------------------------------*/
+/*       Hamburger-Cross         */
+/*-------------------------------*/
+.hamburger {
+  background: #1ab394;
+  border-color: #1ab394;
+  border-radius: 3px;
+  color:white;
+  border: none;
+  height: 32px;
+  width: 40px;
+}
+.hamburger:hover {
+  outline: none;
+}
+.hamburger:focus {
+  outline: none;
+}
+.hamburger:active {
+  outline: none;
+}
+/*-------------------------------*/
+/*          Dark Overlay         */
+/*-------------------------------*/
+.overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /*background-color: rgba(0, 0, 0, 0.4);*/
+  z-index: 1;
+}
+/* SOME DEMO STYLES - NOT REQUIRED */
+body,
+html {
+  background-color: #583e7e;
+}
+body h1,
+body h2,
+body h3,
+body h4 {
+  color: #000;
+}
+body p,
+body blockquote {
+  color: #000;
+}
+body a:hover {
+  background-color: transparent;
+  text-decoration:none;
+}
