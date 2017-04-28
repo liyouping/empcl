@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-
   devise_for :admins, controllers: { sessions: 'admins/sessions' },path: 'admin'
   namespace :admins ,path: 'admin' do
     root 'messages#index'
-    resources :messages
+    resources :messages,:pages
   end
 
    scope "(:locale)", locale: /en|zh_CN/ do
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
         post 'send_msg'
       end
     end
+    resources :pages
    end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

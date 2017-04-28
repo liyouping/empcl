@@ -42,6 +42,8 @@ gem 'rails-i18n', '~> 5.0.0'
 # gem 'http_accept_language'
 #登录插件
 gem 'devise'
+#假删除
+gem "paranoia", "~> 2.2"
 
 gem "font-awesome-rails"
 
