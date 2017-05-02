@@ -44,6 +44,8 @@ gem 'rails-i18n', '~> 5.0.0'
 gem 'devise'
 #假删除
 gem "paranoia", "~> 2.2"
+#分页
+gem 'kaminari'
 
 gem "font-awesome-rails"
 

@@ -1,2 +1,66 @@
-<h1>Admins::Informations#edit</h1>
-<p>Find me in app/views/admins/informations/edit.html.erb</p>
+<div class="row">
+  <div class="col-lg-1 col-xs-1"></div>
+  <div class="col-lg-10 col-xs-10">
+    <h2>修改页面</h2>
+    <%= form_for(@page, {url: new_admins_page_path(@page), role: "form"}) do |f| %>
+        <%= render partial: 'form', locals: {page: @page, f: f} %>
+    <% end %>
+  </div>
+  <div class="col-lg-1 col-xs-1"></div>
+</div>
+
+<script type="text/javascript">
+  // 为页面所有的editor配置全局的密钥
+  wangEditor.config.mapAk = '2g3gNoUjPw1HCyRpYZr8IRYzoCNaDj2y';
+
+  var editor = new wangEditor('page-content');
+  var en_editor = new wangEditor('en-page-content');
+  // 普通的自定义菜单
+  //  editor.config.menus = [
+  //    'source',
+  //    '|',     // '|' 是菜单组的分割线
+  //    'bold',
+  //    'underline',
+  //    'italic',
+  //    'strikethrough',
+  //    'eraser',
+  //    'forecolor',
+  //    'bgcolor'
+  //  ];
+  //  en_editor.config.menus = [
+  //    'source',
+  //    '|',     // '|' 是菜单组的分割线
+  //    'bold',
+  //    'underline',
+  //    'italic',
+  //    'strikethrough',
+  //    'eraser',
+  //    'forecolor',
+  //    'bgcolor'
+  //  ];
+
+  // 仅仅想移除某几个菜单，例如想移除『插入代码』和『全屏』菜单：
+  // 其中的 wangEditor.config.menus 可获取默认情况下的菜单配置
+  editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
+    if (item === 'location') {
+      return null;
+    }
+    if (item === 'fullscreen') {
+      return null;
+    }
+    return item;
+  });
+  en_editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
+    if (item === 'location') {
+      return null;
+    }
+    if (item === 'fullscreen') {
+      return null;
+    }
+    return item;
+  });
+  editor.create();
+  en_editor.create();
+  editor.$editorContainer.css('z-index', 20);
+  en_editor.$editorContainer.css('z-index', 10);
+</script>

@@ -1,6 +1,18 @@
 <div class="form-group">
-  <label>标题<span class="pre-flag">*</span></label>
+  <%= f.submit "保存" , class: "btn btn-primary save-btn"%> <%= link_to "返回",admins_pages_path,class: "btn btn-primary back-btn" %>
+</div>
+<div class="form-group">
+  <label>中文标题:</label>
   <%= f.text_field :title,class: "form-control" ,maxlength: 30 %>
   <%= f.text_area :content ,style: "display:none;" %>
 </div>
-<div id="page-content"></div>
+<label>中文页面内容:</label>
+<div id="page-content" style="height: 600px;"></div>
+
+<div class="form-group">
+  <label>英文标题:</label>
+  <%= f.text_field :en_title,class: "form-control" ,maxlength: 30 %>
+  <%= f.text_area :en_content ,style: "display:none;" %>
+</div>
+<label>英文页面内容:</label>
+<div id="en-page-content" style="height: 600px;"></div>

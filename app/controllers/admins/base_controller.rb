@@ -12,4 +12,11 @@ class Admins::BaseController < ApplicationController
     end
   end
 
+
+  def paginate(resource)
+    resource = resource.page(params[:page] || 1)
+    per_page = params[:per_page].present? ? params[:per_page] : 10
+    resource = resource.per(per_page)
+    return resource
+  end
 end
