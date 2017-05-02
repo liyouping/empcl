@@ -1,5 +1,5 @@
 class BaseController < ApplicationController
-
+  layout "application"
   before_action :set_locale
 
   helper_method :getlocal

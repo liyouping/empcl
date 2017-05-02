@@ -2,7 +2,7 @@
   <div class="col-lg-1 col-xs-1"></div>
   <div class="col-lg-10 col-xs-10">
     <h2>修改页面</h2>
-    <%= form_for(@page, {url: new_admins_page_path(@page), role: "form"}) do |f| %>
+    <%= form_for(@page, {url: admins_page_path(@page), role: "form"}) do |f| %>
         <%= render partial: 'form', locals: {page: @page, f: f} %>
     <% end %>
   </div>
@@ -10,6 +10,7 @@
 </div>
 
 <script type="text/javascript">
+
   // 为页面所有的editor配置全局的密钥
   wangEditor.config.mapAk = '2g3gNoUjPw1HCyRpYZr8IRYzoCNaDj2y';
 
@@ -63,4 +64,15 @@
   en_editor.create();
   editor.$editorContainer.css('z-index', 20);
   en_editor.$editorContainer.css('z-index', 10);
+
+
+  function submitForm() {
+    $("#page_content").val(editor.$txt.html());
+    $("#page_en_content").val(en_editor.$txt.html());
+    $("form").submit();
+  }
+  $(document).ready(function () {
+    editor.$txt.html($("#page_content").val());
+    en_editor.$txt.html($("#page_en_content").val());
+  });
 </script>

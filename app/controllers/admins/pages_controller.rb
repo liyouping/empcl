@@ -1,5 +1,6 @@
 class Admins::PagesController < Admins::BaseController
   include ApplicationHelper
+  before_action :set_page, only: [:show, :edit, :update, :destroy]
   def index
     @pages = Page.all.order('created_at desc').page(1).per(10)
   end

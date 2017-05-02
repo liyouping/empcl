@@ -1,2 +1,13 @@
-<h1>Informations#show</h1>
-<p>Find me in app/views/informations/show.html.erb</p>
+<div class="row">
+
+  <div class="col-md-1 col-xs-1"></div>
+  <div class="col-md-10 col-xs-10">
+    <% if getlocal == "zh_CN" %>
+        <%= @page.content.html_safe %>
+    <% elsif getlocal == "en" %>
+      <%= @page.en_content.html_safe %>
+    <% end %>
+
+  </div>
+  <div class="col-md-1 col-xs-1"></div>
+</div>

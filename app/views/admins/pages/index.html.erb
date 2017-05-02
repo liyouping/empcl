@@ -25,7 +25,7 @@
                   <td><%= p.en_title %></td>
                   <td><%= fmt_date(p.created_at) %></td>
                   <td>
-                    <%= link_to '查看', admins_page_path(p), class: "btn btn-primary" %>
+                    <%= link_to '预览', admins_page_path(p), class: "btn btn-primary" %>
                     <%= link_to '修改', edit_admins_page_path(p), class: "btn btn-primary" %>
                     <%= link_to '删除', admins_page_path(p), method: :delete, data: {confirm: '确定要删除?'}, class: "btn btn-danger" %>
                   </td>

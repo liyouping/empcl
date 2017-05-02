@@ -10,12 +10,13 @@
 </div>
 
 <script type="text/javascript">
-  // 为页面所有的editor配置全局的密钥
-  wangEditor.config.mapAk = '2g3gNoUjPw1HCyRpYZr8IRYzoCNaDj2y';
 
-  var editor = new wangEditor('page-content');
-  var en_editor = new wangEditor('en-page-content');
-  // 普通的自定义菜单
+    // 为页面所有的editor配置全局的密钥
+    wangEditor.config.mapAk = '2g3gNoUjPw1HCyRpYZr8IRYzoCNaDj2y';
+
+    var editor = new wangEditor('page-content');
+    var en_editor = new wangEditor('en-page-content');
+    // 普通的自定义菜单
 //  editor.config.menus = [
 //    'source',
 //    '|',     // '|' 是菜单组的分割线
@@ -39,28 +40,35 @@
 //    'bgcolor'
 //  ];
 
-  // 仅仅想移除某几个菜单，例如想移除『插入代码』和『全屏』菜单：
-  // 其中的 wangEditor.config.menus 可获取默认情况下的菜单配置
-   editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
-       if (item === 'location') {
-           return null;
-       }
-       if (item === 'fullscreen') {
-           return null;
-       }
-       return item;
-   });
-  en_editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
-     if (item === 'location') {
-         return null;
-     }
-    if (item === 'fullscreen') {
-      return null;
+    // 仅仅想移除某几个菜单，例如想移除『插入代码』和『全屏』菜单：
+    // 其中的 wangEditor.config.menus 可获取默认情况下的菜单配置
+    editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
+      if (item === 'location') {
+        return null;
+      }
+      if (item === 'fullscreen') {
+        return null;
+      }
+      return item;
+    });
+    en_editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
+      if (item === 'location') {
+        return null;
+      }
+      if (item === 'fullscreen') {
+        return null;
+      }
+      return item;
+    });
+    editor.create();
+    en_editor.create();
+    editor.$editorContainer.css('z-index', 20);
+    en_editor.$editorContainer.css('z-index', 10);
+
+
+    function submitForm() {
+     $("#page_content").val(editor.$txt.html());
+     $("#page_en_content").val(en_editor.$txt.html());
+     $("form").submit();
     }
-    return item;
-  });
-  editor.create();
-  en_editor.create();
-  editor.$editorContainer.css('z-index', 20)
-  en_editor.$editorContainer.css('z-index', 10)
 </script>
