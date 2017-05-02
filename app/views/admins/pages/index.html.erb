@@ -1,7 +1,9 @@
+<%= render partial: "common/notice_or_error" %>
 <div class="row">
-  <div class="col-lg-12 col-xs-12"><h3 class="page-header"></h3>
+  <div class="col-lg-12 col-xs-12"><h3 class="page-header">页面库列表</h3>
     <div class="table-responsive data-list">
-      <%= paginate @pages %>
+      <%= paginate @pages , params: {total_count: @pages.total_count}%>
+      <%= @pages.total_count %>
       <table class="table table-bordered">
         <thead>
         <tr>

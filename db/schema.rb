@@ -52,6 +52,8 @@ ActiveRecord::Schema.define(version: 20170428075806) do
   create_table "pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "title"
     t.text     "content",    limit: 65535
+    t.string   "en_title"
+    t.text     "en_content", limit: 65535
     t.datetime "deleted_at"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false

@@ -2,7 +2,7 @@ class Admins::PagesController < Admins::BaseController
   include ApplicationHelper
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   def index
-    @pages = Page.all.order('created_at desc').page(1).per(10)
+    @pages = Page.all.order('created_at desc').page(params[:page] || 1).per(1)
   end
 
   def new
@@ -39,6 +39,18 @@ class Admins::PagesController < Admins::BaseController
   end
 
   def show
+  end
+
+  def destroy
+    respond_to do |format|
+      if  @page.destroy
+        format.html { redirect_to admins_pages_path, notice: '页面删除成功！' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to admins_pages_path, error: '页面删除失败！' }
+        format.json { head :no_content }
+      end
+    end
   end
 
   private

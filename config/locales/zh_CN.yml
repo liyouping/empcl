@@ -250,3 +250,10 @@ zh_CN:
       long: "%Y年%b%d日 %H:%M"
       short: "%b%d日 %H:%M"
     pm: 下午
+  views:
+    pagination:
+      truncate: "..."
+      previous: "上一页"
+      next: "下一页"
+      first: "首页"
+      last: "末页"

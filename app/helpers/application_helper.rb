@@ -14,4 +14,9 @@ module ApplicationHelper
   def fmt_date(date_str,fmt='%Y-%m-%d %H:%M:%S')
     date_str.strftime(fmt)
   end
+
+  def will_paginate(collection, options={})
+    content = ""
+
+  end
 end

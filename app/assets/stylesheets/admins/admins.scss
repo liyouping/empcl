@@ -20,3 +20,9 @@
 /*使用bootstrap*/
 
 
+.table-bordered > thead > tr > th, .table-bordered > thead > tr > td,.table>tbody>tr>td{
+  text-align: center;
+  vertical-align: middle;
+}
+.alert{margin-top: 20px;margin-bottom: 0px;}
+.page-header{margin-top: 20px;}
