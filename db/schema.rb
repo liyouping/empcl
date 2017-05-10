@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428075806) do
+ActiveRecord::Schema.define(version: 20170510081818) do
 
   create_table "admins", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "email",                  default: "", null: false
@@ -31,6 +31,36 @@ ActiveRecord::Schema.define(version: 20170428075806) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
   end
 
+  create_table "level1_menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.string   "name"
+    t.string   "en_name"
+    t.string   "link"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "level2_menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.integer  "level1_menu_id"
+    t.string   "name"
+    t.string   "en_name"
+    t.string   "link"
+    t.datetime "deleted_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "level3_menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
+    t.integer  "level1_menu_id"
+    t.integer  "level2_menu_id"
+    t.string   "name"
+    t.string   "en_name"
+    t.string   "link"
+    t.datetime "deleted_at"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "name"
     t.string   "company"
@@ -38,8 +68,9 @@ ActiveRecord::Schema.define(version: 20170428075806) do
     t.string   "email"
     t.integer  "msg_type_id"
     t.text     "content",     limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+    t.string   "read_flag",   limit: 1,     default: "0"
   end
 
   create_table "msg_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
@@ -52,11 +83,11 @@ ActiveRecord::Schema.define(version: 20170428075806) do
   create_table "pages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
     t.string   "title"
     t.text     "content",    limit: 65535
-    t.string   "en_title"
-    t.text     "en_content", limit: 65535
     t.datetime "deleted_at"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.string   "en_title"
+    t.text     "en_content", limit: 65535
   end
 
 end

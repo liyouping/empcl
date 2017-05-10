@@ -19,4 +19,6 @@ class Admins::BaseController < ApplicationController
     resource = resource.per(per_page)
     return resource
   end
+
+
 end

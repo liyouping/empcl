@@ -7,11 +7,13 @@
     paginator:     the paginator that renders the pagination tags inside
 -%>
 <%= paginator.render do -%>
-  <span> <%= "#{}(第#{current_page}页／共#{total_pages}页)" %></span>
-  <ul class="pagination">
-    <li><%= first_page_tag %></li>
-    <li><%= prev_page_tag  %></li>
-    <li><%= next_page_tag  %></li>
-    <li><%= last_page_tag  %></li>
-  </ul>
+    <span> <%= "(第#{current_page}页／共#{total_pages}页)" %></span>
+    <div style="float: right;height: 60px;">
+      <ul class="pagination">
+        <li><%= first_page_tag %></li>
+        <li><%= prev_page_tag %></li>
+        <li><%= next_page_tag %></li>
+        <li><%= last_page_tag %></li>
+      </ul>
+    </div>
 <% end -%>

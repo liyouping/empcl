@@ -1,9 +1,14 @@
 <%= render partial: "common/notice_or_error" %>
 <div class="row">
-  <div class="col-lg-12 col-xs-12"><h3 class="page-header">页面库列表</h3>
+  <div class="col-lg-12 col-xs-12">
+    <h3 class="page-header">页面库列表</h3>
+    <div class="paginate-box">
+      <span>共:<%= @pages.total_count %>条</span>
+      <%= paginate @pages %>
+      <div class="cb"></div>
+    </div>
     <div class="table-responsive data-list">
-      <%= paginate @pages , params: {total_count: @pages.total_count}%>
-      <%= @pages.total_count %>
+
       <table class="table table-bordered">
         <thead>
         <tr>
@@ -16,9 +21,7 @@
         </thead>
         <tbody>
         <% if @pages.blank? %>
-            <tr>
-              <td colspan="5" class="ac">没有数据</td>
-            </tr>
+            <%= no_result_show_helper(5) %>
         <% else %>
             <% @pages.each do |p| %>
                 <tr>

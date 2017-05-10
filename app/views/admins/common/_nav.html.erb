@@ -11,10 +11,10 @@
         <a href="/"><i class="fa fa-fw fa-home"></i> 首页</a>
       </li>
       <li>
-        <a href="<%= edit_admin_registration_path %>"><i class="fa fa-fw fa-folder"></i> Page one</a>
+        <a href="<%= admins_messages_path %>"><i class="fa fa-fw fa-envelope"></i> 留言管理</a>
       </li>
       <li>
-        <a href="<%= admins_pages_path %>"><i class="fa fa-fw fa-file-o"></i> 页面库</a>
+        <a href="<%= admins_pages_path %>"><i class="fa fa-fw fa-folder"></i> 页面库</a>
       </li>
       <li>
         <a href="#"><i class="fa fa-fw fa-cog"></i> Third page</a>
@@ -56,8 +56,12 @@
           <i class="fa fa-user"></i><span class="label admin-name"><%= current_admin.name %></span>
         </li>
         <li>
-          <a class="dropdown-toggle count-info msg" data-toggle="dropdown" href="#">
-            <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
+          <a class=" count-info msg" href="<%= admins_messages_path %>">
+            <i class="fa fa-envelope"></i>
+            <% no_read_count = msg_no_read_count %>
+            <% if no_read_count >0 %>
+            <span class="label label-warning"><%=no_read_count %></span>
+                <% end %>
           </a>
         </li>
         <li>

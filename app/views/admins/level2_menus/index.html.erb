@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Admins Level2 Menus</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Link</th>
+      <th>Deleted at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admins_level2_menus.each do |admins_level2_menu| %>
+      <tr>
+        <td><%= admins_level2_menu.name %></td>
+        <td><%= admins_level2_menu.link %></td>
+        <td><%= admins_level2_menu.deleted_at %></td>
+        <td><%= link_to 'Show', admins_level2_menu %></td>
+        <td><%= link_to 'Edit', edit_admins_level2_menu_path(admins_level2_menu) %></td>
+        <td><%= link_to 'Destroy', admins_level2_menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admins Level2 Menu', new_admins_level2_menu_path %>

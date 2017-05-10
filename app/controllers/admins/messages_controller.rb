@@ -2,12 +2,12 @@ class Admins::MessagesController < Admins::BaseController
   before_action :set_message, only: [:show, :edit, :update, :destroy]
 
   def index
-    @messages = Message.all.order('created_at desc')
+    @messages = Message.all.order('created_at desc').page(params[:page] || 1).per(10)
   end
 
 
   def show
-
+   @message.update read_flag: "1"
   end
 
   def edit

@@ -1,6 +1,7 @@
 class Admins::PagesController < Admins::BaseController
   include ApplicationHelper
   before_action :set_page, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token,only: :upload_img
   def index
     @pages = Page.all.order('created_at desc').page(params[:page] || 1).per(1)
   end
@@ -39,6 +40,7 @@ class Admins::PagesController < Admins::BaseController
   end
 
   def show
+
   end
 
   def destroy
@@ -51,6 +53,15 @@ class Admins::PagesController < Admins::BaseController
         format.json { head :no_content }
       end
     end
+  end
+
+  def upload_img
+    if request.post?
+      pp params[:img]
+      file_path = UploadedFileUtils.save_uploaded_file(params[:img])
+      render text: root_url+file_path
+    end
+
   end
 
   private

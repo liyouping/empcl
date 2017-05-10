@@ -39,23 +39,21 @@
   //    'forecolor',
   //    'bgcolor'
   //  ];
-
+  //上传文件配置
+  editor.config.uploadImgUrl = '/admin/pages/upload_img';
+  editor.config.uploadImgFileName = 'img';
+  en_editor.config.uploadImgUrl = '/admin/pages/upload_img';
+  en_editor.config.uploadImgFileName = 'img';
   // 仅仅想移除某几个菜单，例如想移除『插入代码』和『全屏』菜单：
   // 其中的 wangEditor.config.menus 可获取默认情况下的菜单配置
   editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
-    if (item === 'location') {
-      return null;
-    }
-    if (item === 'fullscreen') {
+    if (item === 'location' || item === 'fullscreen' || item === 'video') {
       return null;
     }
     return item;
   });
   en_editor.config.menus = $.map(wangEditor.config.menus, function(item, key) {
-    if (item === 'location') {
-      return null;
-    }
-    if (item === 'fullscreen') {
+    if (item === 'location' || item === 'fullscreen' || item === 'video') {
       return null;
     }
     return item;

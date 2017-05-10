@@ -1,5 +1,11 @@
 <div class="row">
-  <div class="col-lg-12 col-xs-12"><h3 class="page-header"></h3>
+  <div class="col-lg-12 col-xs-12">
+    <h3 class="page-header">留言列表</h3>
+    <div class="paginate-box">
+      <span>共:<%= @messages.total_count %>条</span>
+      <%= paginate @messages %>
+      <div class="cb"></div>
+    </div>
     <div class="table-responsive data-list">
       <table class="table table-bordered">
         <thead>
@@ -10,15 +16,13 @@
           <th>邮件</th>
           <th>留言类型</th>
           <th>留言时间</th>
-          <th>留言内容</th>
+          <th>状态</th>
           <th>操作</th>
         </tr>
         </thead>
         <tbody>
         <% if @messages.blank? %>
-            <tr>
-              <td colspan="8" class="ac">没有数据</td>
-            </tr>
+            <%= no_result_show_helper(8) %>
         <% else %>
             <% @messages.each do |msg| %>
                 <tr>
@@ -28,7 +32,7 @@
                   <td><%= msg.email %></td>
                   <td><%= msg.msg_type.name %></td>
                   <td><%= fmt_date(msg.created_at) %></td>
-                  <td><%= msg.content %></td>
+                  <td><%= msg_read_status(msg.read_flag) %></td>
                   <td>
                     <%= link_to '查看', admins_message_path(msg), class: "btn btn-primary" %>
                     <%= link_to '修改', edit_admins_message_path(msg), class: "btn btn-primary" %>

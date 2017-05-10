@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @admins_level2_menu.name %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @admins_level2_menu.link %>
+</p>
+
+<p>
+  <strong>Deleted at:</strong>
+  <%= @admins_level2_menu.deleted_at %>
+</p>
+
+<%= link_to 'Edit', edit_admins_level2_menu_path(@admins_level2_menu) %> |
+<%= link_to 'Back', admins_level2_menus_path %>

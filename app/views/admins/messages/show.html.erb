@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-lg-12 col-xs-12">
+    <h3>留言详情</h3>
+    <p><span>姓名:</span><%= @message.name %></p>
+    <% if @message.company.present? %>
+    <p><span>公司/组织名:</span><%= @message.company %></p>
+    <% end %>
+    <p><span>电话:</span><%= @message.tel_num %></p>
+    <p><span>邮件:</span><%= @message.email %></p>
+    <p><span>留言时间:</span><%= fmt_date(@message.created_at) %></p>
+    <p><span>留言内容:</span><%= @message.content %></p>
+  </div>
+</div>

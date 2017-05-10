@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+
   devise_for :admins, controllers: { sessions: 'admins/sessions' },path: 'admin'
   namespace :admins ,path: 'admin' do
     root 'messages#index'
-    resources :messages,:pages
+    resources :messages,:level1_menus,:level2_menus,:level3_menus
+    resources :pages do
+      collection do
+        post 'upload_img'
+      end
+    end
+
   end
 
    scope "(:locale)", locale: /en|zh_CN/ do

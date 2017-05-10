@@ -45,7 +45,7 @@
 (function (window, $) {
     if (window.wangEditor) {
         // 重复引用
-        alert('一个页面不能重复引用 wangEditor.js 或 wangEditor.min.js ！！！');
+       // alert('一个页面不能重复引用 wangEditor.js 或 wangEditor.min.js ！！！');
         return;
     }
 
