@@ -18,6 +18,10 @@ Rails.application.routes.draw do
       member do
         get 'move_position/:type' => 'level3_menus#move_position'
       end
+      collection do
+        get "level2_menus"
+      end
+
     end
     resources :pages do
       collection do

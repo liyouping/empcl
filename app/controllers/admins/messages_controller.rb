@@ -7,7 +7,7 @@ class Admins::MessagesController < Admins::BaseController
 
 
   def show
-   @message.update read_flag: "1"
+   @message.update read_flag: true
   end
 
   def edit

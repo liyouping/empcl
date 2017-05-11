@@ -2,6 +2,16 @@
   <%= f.button "<i class='fa fa-fw fa-save'></i>保存".html_safe ,class: "btn btn-primary save-btn"%>
   <%= link_to "<i class='fa fa-fw fa-arrow-left'></i>返回".html_safe,admins_level1_menus_path,class: "btn btn-primary back-btn" %>
 </div>
+
+<div class="form-group">
+  <label><span class="pre-flag">*</span>一级菜单:</label>
+  <%= f.select :level1_menu_id,Level1Menu.all.collect{|m| [ m.name, m.id]},{prompt: "请选择"},class: "form-control",onchange: "getLevel2Menus(this.value)"  %>
+</div>
+<span id="level2Menus"></span>
+<div class="form-group">
+  <label><span class="pre-flag">*</span>二级菜单:</label>
+  <%= f.select :level2_menu_id,[],{prompt: "请选择"},class: "form-control" %>
+</div>
 <div class="form-group">
   <label><span class="pre-flag">*</span>中文菜单名:</label>
   <%= f.text_field :name,class: "form-control" ,maxlength: 30,placeholder:'必填' %>
@@ -18,3 +28,19 @@
   <label>菜单链接:<span class="pre-flag">(无子菜单链接才有效)</span></label>
   <%= f.text_field :link,class: "form-control"  %>
 </div>
+<script>
+  function getLevel2Menus(menuId) {
+    $.get(
+        "/admin/level3_menus/level2_menus",
+        {level1_menu_id: menuId},
+        function (data) {
+          console.log(data);
+          var htmlStr="<option value=''>请选择</option>";
+          for(var i=0;i<data.length;i++){
+            htmlStr+="<option value='"+data[i]["id"]+"'>"+data[i]["name"]+"</option>";
+          }
+          $("#level3_menu_level2_menu_id").html(htmlStr);
+        },"json"
+    )
+  }
+</script>

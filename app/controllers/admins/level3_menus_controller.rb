@@ -66,6 +66,11 @@ class Admins::Level3MenusController < Admins::BaseController
 
   end
 
+  def level2_menus
+    level2_menu_list = Level2Menu.where(level1_menu_id: params[:level1_menu_id]).select("id,name")
+    render json: level2_menu_list
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admins_level3_menu
@@ -74,6 +79,6 @@ class Admins::Level3MenusController < Admins::BaseController
 
     # Only allow a trusted parameter "white list" through.
     def admins_level3_menu_params
-      params.require(:menu).permit(:name,:en_name,:show_type,:position, :link)
+      params.require(:level3_menu).permit(:level1_menu_id,:level2_menu_id,:name,:en_name,:show_type,:position, :link)
     end
 end

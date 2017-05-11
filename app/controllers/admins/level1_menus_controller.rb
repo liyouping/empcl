@@ -74,6 +74,6 @@ class Admins::Level1MenusController < Admins::BaseController
 
     # Only allow a trusted parameter "white list" through.
     def menu_params
-      params.require(:menu).permit(:name,:en_name,:show_type,:position, :link)
+      params.require(:level1_menu).permit(:name,:en_name,:show_type,:position, :link)
     end
 end
