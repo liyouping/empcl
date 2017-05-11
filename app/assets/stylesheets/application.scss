@@ -11,6 +11,8 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
+ *= require "home"
+ *= require "pages"
  */
 /*使用bootstrap*/
 @import "bootstrap-sprockets";
@@ -22,6 +24,7 @@
 	}
 
 }
+
 .navbar{margin-bottom: 0;}
 .navbar-brand{padding: 0;}
 .navbar-brand img{
@@ -32,3 +35,13 @@
 .mb15{margin-bottom: 15px;}
 .notice-div{margin-bottom: 0;margin-top: 20px;padding-left: 15px !important;}
 .data-list{margin-left: 10px;margin-right: 10px;}
+.news-bg,.news-list,.footer{
+  text-align: center;
+}
+
+
+.footer{
+ padding-top: 10px;
+  border-top: 1px solid #ccc;
+}
+

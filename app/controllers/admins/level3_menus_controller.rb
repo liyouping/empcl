@@ -3,7 +3,7 @@ class Admins::Level3MenusController < Admins::BaseController
 
   # GET /admins/level3_menus
   def index
-    @admins_level3_menus = Admins::Level3Menu.all
+    @menus = Level3Menu.all.order('position asc').page(params[:page] || 1).per(10)
   end
 
   # GET /admins/level3_menus/1
@@ -12,7 +12,7 @@ class Admins::Level3MenusController < Admins::BaseController
 
   # GET /admins/level3_menus/new
   def new
-    @admins_level3_menu = Admins::Level3Menu.new
+    @menu = Level3Menu.new
   end
 
   # GET /admins/level3_menus/1/edit
@@ -21,10 +21,10 @@ class Admins::Level3MenusController < Admins::BaseController
 
   # POST /admins/level3_menus
   def create
-    @admins_level3_menu = Admins::Level3Menu.new(admins_level3_menu_params)
+    @menu = Level3Menu.new(admins_level3_menu_params)
 
-    if @admins_level3_menu.save
-      redirect_to @admins_level3_menu, notice: 'Level3 menu was successfully created.'
+    if @menu.save
+      redirect_to admins_level3_menus_url, notice: '三级菜单创建成功!'
     else
       render :new
     end
@@ -32,8 +32,8 @@ class Admins::Level3MenusController < Admins::BaseController
 
   # PATCH/PUT /admins/level3_menus/1
   def update
-    if @admins_level3_menu.update(admins_level3_menu_params)
-      redirect_to @admins_level3_menu, notice: 'Level3 menu was successfully updated.'
+    if @menu.update(admins_level3_menu_params)
+      redirect_to admins_level3_menus_url, notice: '三级菜单更新成功!'
     else
       render :edit
     end
@@ -41,18 +41,39 @@ class Admins::Level3MenusController < Admins::BaseController
 
   # DELETE /admins/level3_menus/1
   def destroy
-    @admins_level3_menu.destroy
-    redirect_to admins_level3_menus_url, notice: 'Level3 menu was successfully destroyed.'
+    @menu.destroy
+    redirect_to admins_level3_menus_url, notice: '三级菜单删除成功!'
+  end
+
+  def move_position
+    menu = Level3Menu.find(params[:id])
+    notice = ''
+    case params[:type]
+      when 'pre'
+        menu.move_higher
+        notice = '三级菜单上移成功!'
+      when 'next'
+        menu.move_lower
+        notice = '三级菜单下移成功!'
+      when 'first'
+        menu.move_to_top
+        notice = '三级菜单置顶成功!'
+      when 'last'
+        menu.move_to_bottom
+        notice = '三级菜单置底成功!'
+    end
+    redirect_to admins_level3_menus_path, notice: notice
+
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admins_level3_menu
-      @admins_level3_menu = Admins::Level3Menu.find(params[:id])
+      @menu = Level3Menu.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
     def admins_level3_menu_params
-      params.require(:admins_level3_menu).permit(:name, :link)
+      params.require(:menu).permit(:name,:en_name,:show_type,:position, :link)
     end
 end

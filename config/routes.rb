@@ -3,7 +3,22 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: { sessions: 'admins/sessions' },path: 'admin'
   namespace :admins ,path: 'admin' do
     root 'messages#index'
-    resources :messages,:level1_menus,:level2_menus,:level3_menus
+    resources :messages
+    resources :level1_menus do
+      member do
+        get 'move_position/:type' => 'level1_menus#move_position'
+      end
+    end
+    resources :level2_menus do
+      member do
+        get 'move_position/:type' => 'level2_menus#move_position'
+      end
+    end
+    resources :level3_menus do
+      member do
+        get 'move_position/:type' => 'level3_menus#move_position'
+      end
+    end
     resources :pages do
       collection do
         post 'upload_img'

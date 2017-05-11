@@ -7,8 +7,7 @@ class CreateMessages < ActiveRecord::Migration[5.0]
       t.string :email
       t.integer :msg_type_id
       t.text :content
-      t.string :read_flag, default: '0'
-      #t.boolean, :read_flag, default: '0'
+      t.boolean :read_flag, default: false
 
       t.timestamps
     end

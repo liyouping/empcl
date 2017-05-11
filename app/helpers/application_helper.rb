@@ -29,10 +29,10 @@ module ApplicationHelper
   end
 
   def msg_read_status(status)
-    if status == "0"
-      "<i class='fa fa-fw fa-eye-slash'></i>未阅".html_safe
-    elsif status == "1"
+    if status
       "<i class='fa fa-fw fa-eye'></i>已阅".html_safe
+    else
+      "<i class='fa fa-fw fa-eye-slash'></i>未阅".html_safe
     end
   end
 end

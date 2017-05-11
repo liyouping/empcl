@@ -47,8 +47,12 @@ gem "paranoia", "~> 2.2"
 #分页
 gem 'kaminari'
 
+#图标字体
 gem "font-awesome-rails"
 
+#数据上上下下排序
+gem "acts_as_list"
+#生成唯一的一串字符
 gem "uuidtools"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

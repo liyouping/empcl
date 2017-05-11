@@ -1,32 +1,20 @@
-<%= form_for(admins_level2_menu) do |f| %>
-  <% if admins_level2_menu.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(admins_level2_menu.errors.count, "error") %> prohibited this admins_level2_menu from being saved:</h2>
-
-      <ul>
-      <% admins_level2_menu.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= f.label :link %>
-    <%= f.text_field :link %>
-  </div>
-
-  <div class="field">
-    <%= f.label :deleted_at %>
-    <%= f.datetime_select :deleted_at %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+<div class="form-group">
+  <%= f.button "<i class='fa fa-fw fa-save'></i>保存".html_safe ,class: "btn btn-primary save-btn"%>
+  <%= link_to "<i class='fa fa-fw fa-arrow-left'></i>返回".html_safe,admins_level1_menus_path,class: "btn btn-primary back-btn" %>
+</div>
+<div class="form-group">
+  <label><span class="pre-flag">*</span>中文菜单名:</label>
+  <%= f.text_field :name,class: "form-control" ,maxlength: 30,placeholder:'必填' %>
+</div>
+<div class="form-group">
+  <label><span class="pre-flag">*</span>英文菜单名:</label>
+  <%= f.text_field :en_name,class: "form-control" ,maxlength: 30,placeholder:'必填' %>
+</div>
+<div class="form-group">
+  <label><span class="pre-flag">*</span>显示类型:</label>
+  <%= f.select :show_type,[['中英文状态都显示','0'],['只中文状态显示','1'],['只英文状态显示','2']],{},class: "form-control" %>
+</div>
+<div class="form-group">
+  <label>菜单链接:<span class="pre-flag">(无子菜单链接才有效)</span></label>
+  <%= f.text_field :link,class: "form-control"  %>
+</div>

@@ -3,7 +3,7 @@ class Admins::PagesController < Admins::BaseController
   before_action :set_page, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token,only: :upload_img
   def index
-    @pages = Page.all.order('created_at desc').page(params[:page] || 1).per(1)
+    @pages = Page.all.order('created_at desc').page(params[:page] || 1).per(10)
   end
 
   def new

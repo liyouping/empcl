@@ -115,22 +115,22 @@ li{
   position: relative;
   width: 100%;
 }
-.sidebar-nav li:before {
-  background-color: #1c1c1c;
-  content: '';
-  height: 100%;
-  left: 0;
-  position: absolute;
-  top: 0;
-  -webkit-transition: width 0.2s ease-in;
-  transition: width 0.2s ease-in;
-  width: 3px;
-  z-index: -1;
-}
-.sidebar-nav li:first-child a {
-  background-color: #2f4050;
-  color: #ffffff;
-}
+/*.sidebar-nav li:before {*/
+  /*background-color: #1c1c1c;*/
+  /*content: '';*/
+  /*height: 100%;*/
+  /*left: 0;*/
+  /*position: absolute;*/
+  /*top: 0;*/
+  /*-webkit-transition: width 0.2s ease-in;*/
+  /*transition: width 0.2s ease-in;*/
+  /*width: 3px;*/
+  /*z-index: -1;*/
+/*}*/
+/*.sidebar-nav li:first-child a {*/
+  /*background-color: #2f4050;*/
+  /*color: #ffffff;*/
+/*}*/
 
 
 .sidebar-nav li a {

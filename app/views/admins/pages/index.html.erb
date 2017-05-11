@@ -30,9 +30,9 @@
                   <td><%= p.en_title %></td>
                   <td><%= fmt_date(p.created_at) %></td>
                   <td>
-                    <%= link_to '预览', admins_page_path(p), class: "btn btn-primary" %>
-                    <%= link_to '修改', edit_admins_page_path(p), class: "btn btn-primary" %>
-                    <%= link_to '删除', admins_page_path(p), method: :delete, data: {confirm: '确定要删除?'}, class: "btn btn-danger" %>
+                    <%= link_to '<i class="fa fa-fw fa-eye"></i>预览'.html_safe, "/pages/#{p.id}", class: "btn btn-primary",target: "_blank" %>
+                    <%= link_to '<i class="fa fa-fw fa-edit"></i>修改'.html_safe, edit_admins_page_path(p), class: "btn btn-primary" %>
+                    <%= link_to '<i class="fa fa-fw fa-trash"></i>删除'.html_safe, admins_page_path(p), method: :delete, data: {confirm: '确定要删除?'}, class: "btn btn-danger" %>
                   </td>
                 </tr>
             <% end %>

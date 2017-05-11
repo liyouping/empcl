@@ -24,11 +24,7 @@
             </li>
             <li><%= link_to t("partner"), "#" %></li>
             <li class="<%=  @select_menu == 'contact' ? 'active' : ''%>"><%= link_to t("contact"), contact_home_index_path %></li>
-            <% if getlocal == "zh_CN" %>
-              <li><%= link_to t("version"), root_path(locale: "en"),id: "change-version" %></li>
-            <% else %>
-              <li><%= link_to t("version"), root_path(locale: "zh_CN"),id: "change-version" %></li>
-            <% end %>
+            <li><%= link_to t("version"),@change_url ,id: "change-version" %></li>
         </ul>
     </div>
     </div>

@@ -3,6 +3,7 @@ zh_CN:
     models:
       message: "留言消息"
       msg_type: "消息类型"
+      level1_menu: "一级菜单"
     attributes:
       message:
         id: "ID"
@@ -14,3 +15,7 @@ zh_CN:
         content: "内容"
       msg_type:
         name: "类型名称"
+      level1_menu:
+        name: "中文菜单名"
+        en_name: "英文菜单名"
+        link: "菜单链接"

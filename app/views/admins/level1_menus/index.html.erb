@@ -1,31 +1,47 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: "common/notice_or_error" %>
+<div class="row">
+  <div class="col-lg-12 col-xs-12">
+    <h3 class="page-header">一级菜单列表 &nbsp;<%= link_to '<i class="fa fa-fw fa-plus"></i>新增'.html_safe, new_admins_level1_menu_path, class: "btn btn-primary" %></h3>
+    <div class="paginate-box">
+      <span>共:<%= @menus.total_count %>条</span>
+      <%= paginate @menus %>
+      <div class="cb"></div>
+    </div>
+    <div class="table-responsive data-list">
 
-<h1>Admins Level1 Menus</h1>
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th>ID</th>
+          <th>中文菜单名</th>
+          <th>英文菜单名</th>
+          <th>显示类型</th>
+          <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% if @menus.blank? %>
+            <%= no_result_show_helper(5) %>
+        <% else %>
+            <% @menus.each do |m| %>
+                <tr>
+                  <td><%= m.id %></td>
+                  <td><%= m.name %></td>
+                  <td><%= m.en_name %></td>
+                  <td><%= menu_show_type(m.show_type) %></td>
+                  <td>
+                    <%= link_to '<i class="fa fa-fw fa-arrow-up"></i>上移'.html_safe, "/admin/level1_menus/#{m.id}/move_position/pre", class: "btn btn-primary" %>
+                    <%= link_to '<i class="fa fa-fw fa-arrow-down"></i>下移'.html_safe, "/admin/level1_menus/#{m.id}/move_position/next", class: "btn btn-primary" %>
+                    <%= link_to '<i class="fa fa-fw fa-eye"></i>预览'.html_safe, "/pages/#{m.id}", class: "btn btn-primary",target: "_blank" %>
+                    <%= link_to '<i class="fa fa-fw fa-edit"></i>修改'.html_safe, edit_admins_level1_menu_path(m), class: "btn btn-primary" %>
+                    <%= link_to '<i class="fa fa-fw fa-trash"></i>删除'.html_safe, admins_level1_menu_path(m), method: :delete, data: {confirm: '确定要删除?'}, class: "btn btn-danger" %>
+                  </td>
+                </tr>
+            <% end %>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Link</th>
-      <th>Deleted at</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @level1_menus.each do |m| %>
-      <tr>
-        <td><%= m.name %></td>
-        <td><%= m.link %></td>
-        <td><%= m.deleted_at %></td>
-        <td><%= link_to 'Show', admins_level1_menu %></td>
-        <td><%= link_to 'Edit', edit_admins_level1_menu_path(m) %></td>
-        <td><%= link_to 'Destroy', admins_level1_menu, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Admins Level1 Menu', new_admins_level1_menu_path %>

@@ -3,7 +3,7 @@ class Admins::Level2MenusController < Admins::BaseController
 
   # GET /admins/level2_menus
   def index
-    @admins_level2_menus = Admins::Level2Menu.all
+    @menus = Level2Menu.all.order('position asc').page(params[:page] || 1).per(10)
   end
 
   # GET /admins/level2_menus/1
@@ -12,7 +12,7 @@ class Admins::Level2MenusController < Admins::BaseController
 
   # GET /admins/level2_menus/new
   def new
-    @admins_level2_menu = Admins::Level2Menu.new
+    @menu = Level2Menu.new
   end
 
   # GET /admins/level2_menus/1/edit
@@ -21,10 +21,10 @@ class Admins::Level2MenusController < Admins::BaseController
 
   # POST /admins/level2_menus
   def create
-    @admins_level2_menu = Admins::Level2Menu.new(admins_level2_menu_params)
+    @menu = Level2Menu.new(menu_params)
 
-    if @admins_level2_menu.save
-      redirect_to @admins_level2_menu, notice: 'Level2 menu was successfully created.'
+    if @menu.save
+      redirect_to admins_level2_menus_url, notice: '二级菜单创建成功!'
     else
       render :new
     end
@@ -32,8 +32,8 @@ class Admins::Level2MenusController < Admins::BaseController
 
   # PATCH/PUT /admins/level2_menus/1
   def update
-    if @admins_level2_menu.update(admins_level2_menu_params)
-      redirect_to @admins_level2_menu, notice: 'Level2 menu was successfully updated.'
+    if @menu.update(menu_params)
+      redirect_to admins_level2_menus_url, notice: '二级菜单更新成功!'
     else
       render :edit
     end
@@ -41,18 +41,39 @@ class Admins::Level2MenusController < Admins::BaseController
 
   # DELETE /admins/level2_menus/1
   def destroy
-    @admins_level2_menu.destroy
-    redirect_to admins_level2_menus_url, notice: 'Level2 menu was successfully destroyed.'
+    @menu.destroy
+    redirect_to admins_level2_menus_url, notice: '二级菜单删除成功'
+  end
+
+  def move_position
+    menu = Level2Menu.find(params[:id])
+    notice = ''
+    case params[:type]
+      when 'pre'
+        menu.move_higher
+        notice = '二级菜单上移成功!'
+      when 'next'
+        menu.move_lower
+        notice = '二级菜单下移成功!'
+      when 'first'
+        menu.move_to_top
+        notice = '二级菜单置顶成功!'
+      when 'last'
+        menu.move_to_bottom
+        notice = '二级菜单置底成功!'
+    end
+    redirect_to admins_level2_menus_path, notice: notice
+
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admins_level2_menu
-      @admins_level2_menu = Admins::Level2Menu.find(params[:id])
+      @menu = Level2Menu.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
-    def admins_level2_menu_params
-      params.require(:admins_level2_menu).permit(:name, :link)
+    def menu_params
+      params.require(:menu).permit(:name,:en_name,:show_type,:position, :link)
     end
 end

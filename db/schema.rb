@@ -35,9 +35,11 @@ ActiveRecord::Schema.define(version: 20170510081818) do
     t.string   "name"
     t.string   "en_name"
     t.string   "link"
+    t.integer  "show_type",  default: 0
+    t.integer  "position"
     t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "level2_menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
@@ -45,9 +47,11 @@ ActiveRecord::Schema.define(version: 20170510081818) do
     t.string   "name"
     t.string   "en_name"
     t.string   "link"
+    t.integer  "show_type",      default: 0
+    t.integer  "position"
     t.datetime "deleted_at"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "level3_menus", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
@@ -56,9 +60,11 @@ ActiveRecord::Schema.define(version: 20170510081818) do
     t.string   "name"
     t.string   "en_name"
     t.string   "link"
+    t.integer  "show_type",      default: 0
+    t.integer  "position"
     t.datetime "deleted_at"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "messages", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
@@ -68,9 +74,9 @@ ActiveRecord::Schema.define(version: 20170510081818) do
     t.string   "email"
     t.integer  "msg_type_id"
     t.text     "content",     limit: 65535
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.string   "read_flag",   limit: 1,     default: "0"
+    t.boolean  "read_flag",                 default: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "msg_types", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin" do |t|
