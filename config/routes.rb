@@ -3,6 +3,13 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: { sessions: 'admins/sessions' },path: 'admin'
   namespace :admins ,path: 'admin' do
     root 'messages#index'
+    resources :admins do
+      collection do
+        get "edit_pwd"
+        post "update_pwd"
+      end
+    end
+
     resources :messages
     resources :level1_menus do
       member do
@@ -21,7 +28,6 @@ Rails.application.routes.draw do
       collection do
         get "level2_menus"
       end
-
     end
     resources :pages do
       collection do

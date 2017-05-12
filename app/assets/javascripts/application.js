@@ -30,4 +30,8 @@ $(document).ready(function () {
             }
         }
     }
+    var screenWidth = document.body.clientWidth;
+    if(screenWidth <= 768){
+        $(".dropdown-submenu").addClass("open");
+    }
 });

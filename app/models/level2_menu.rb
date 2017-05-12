@@ -3,4 +3,6 @@ class Level2Menu < ApplicationRecord
   has_many :level3_menus,-> { order("position ASC") }, dependent: :destroy
   belongs_to :level1_menu,class_name: "Level1Menu"
   acts_as_list scope: :level1_menu
+
+  validates_presence_of :name,:en_name,:level1_menu_id
 end

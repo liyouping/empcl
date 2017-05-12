@@ -22,21 +22,33 @@ class Admins::Level1MenusController < Admins::BaseController
   # POST /admins/level1_menus
   def create
     @menu = Level1Menu.new(menu_params)
-
-    if @menu.save
-      redirect_to admins_level1_menus_path, notice: '一级菜单创建成功!'
+    if @menu.valid?
+      if @menu.save
+        redirect_to admins_level1_menus_path, notice: '一级菜单创建成功!'
+      else
+        @errors = @menu.errors.as_json(full_messages: true).to_json
+        render :new
+      end
     else
+      @errors = @menu.errors.as_json(full_messages: true).to_json
       render :new
     end
   end
 
   # PATCH/PUT /admins/level1_menus/1
   def update
-    if @menu.update(menu_params)
-      redirect_to admins_level1_menus_path, notice: '一级菜单更新成功!'
+    if @menu.valid?
+      if @menu.update(menu_params)
+        redirect_to admins_level1_menus_path, notice: '一级菜单更新成功!'
+      else
+        @errors = @menu.errors.as_json(full_messages: true).to_json
+        render :edit
+      end
     else
+      @errors = @menu.errors.as_json(full_messages: true).to_json
       render :edit
     end
+
   end
 
   # DELETE /admins/level1_menus/1

@@ -32,7 +32,7 @@
                   <td>
                     <%= link_to '<i class="fa fa-fw fa-arrow-up"></i>上移'.html_safe, "/admin/level3_menus/#{m.id}/move_position/pre", class: "btn btn-primary" %>
                     <%= link_to '<i class="fa fa-fw fa-arrow-down"></i>下移'.html_safe, "/admin/level3_menus/#{m.id}/move_position/next", class: "btn btn-primary" %>
-                    <%= link_to '<i class="fa fa-fw fa-eye"></i>预览'.html_safe, "/pages/#{m.id}", class: "btn btn-primary",target: "_blank" %>
+                    <%= link_to '<i class="fa fa-fw fa-eye"></i>预览'.html_safe, "javascript:void(0);", class: "btn btn-primary",onclick: "showLink('#{m.link}','#{@url_pre}')" %>
                     <%= link_to '<i class="fa fa-fw fa-edit"></i>修改'.html_safe, edit_admins_level3_menu_path(m), class: "btn btn-primary" %>
                     <%= link_to '<i class="fa fa-fw fa-trash"></i>删除'.html_safe, admins_level3_menu_path(m), method: :delete, data: {confirm: '确定要删除?'}, class: "btn btn-danger" %>
                   </td>

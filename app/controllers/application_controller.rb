@@ -10,5 +10,8 @@ class ApplicationController < ActionController::Base
   #   end
   #   I18n.locale = l || I18n.locale
   # end
+  def getlocal
+    I18n.locale.to_s
+  end
 
 end

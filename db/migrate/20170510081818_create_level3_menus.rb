@@ -7,7 +7,7 @@ class CreateLevel3Menus < ActiveRecord::Migration[5.0]
       t.string :en_name
       t.string :link
       t.integer :show_type,default: 0 #0中英文下都显示  1只在中文下显示  2只在英文下显示
-      t.integer :position
+      t.integer :position,default: 0
       t.datetime :deleted_at
 
       t.timestamps

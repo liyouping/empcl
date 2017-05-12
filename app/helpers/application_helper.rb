@@ -35,4 +35,9 @@ module ApplicationHelper
       "<i class='fa fa-fw fa-eye-slash'></i>未阅".html_safe
     end
   end
+
+  def change_link(link,local)
+    return link if link.include?("http://") || link.include?("https://")
+    return "/"+local+link.gsub("/en/","").gsub("/zh_CN/","")+"/"
+  end
 end

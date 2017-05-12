@@ -22,19 +22,30 @@ class Admins::Level3MenusController < Admins::BaseController
   # POST /admins/level3_menus
   def create
     @menu = Level3Menu.new(admins_level3_menu_params)
-
-    if @menu.save
-      redirect_to admins_level3_menus_url, notice: '三级菜单创建成功!'
+    if @menu.valid?
+      if @menu.save
+        redirect_to admins_level3_menus_url, notice: '三级菜单创建成功!'
+      else
+        @errors = @menu.errors.as_json(full_messages: true).to_json
+        render :new
+      end
     else
+      @errors = @menu.errors.as_json(full_messages: true).to_json
       render :new
     end
   end
 
   # PATCH/PUT /admins/level3_menus/1
   def update
-    if @menu.update(admins_level3_menu_params)
-      redirect_to admins_level3_menus_url, notice: '三级菜单更新成功!'
+    if @menu.valid?
+      if @menu.update(admins_level3_menu_params)
+        redirect_to admins_level3_menus_url, notice: '三级菜单更新成功!'
+      else
+        @errors = @menu.errors.as_json(full_messages: true).to_json
+        render :edit
+      end
     else
+      @errors = @menu.errors.as_json(full_messages: true).to_json
       render :edit
     end
   end
@@ -63,7 +74,6 @@ class Admins::Level3MenusController < Admins::BaseController
         notice = '三级菜单置底成功!'
     end
     redirect_to admins_level3_menus_path, notice: notice
-
   end
 
   def level2_menus

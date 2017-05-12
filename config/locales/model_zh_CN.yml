@@ -4,6 +4,8 @@ zh_CN:
       message: "留言消息"
       msg_type: "消息类型"
       level1_menu: "一级菜单"
+      level2_menu: "二级菜单"
+      level2_menu: "三级菜单"
     attributes:
       message:
         id: "ID"
@@ -19,3 +21,14 @@ zh_CN:
         name: "中文菜单名"
         en_name: "英文菜单名"
         link: "菜单链接"
+      level2_menu:
+        name: "中文菜单名"
+        en_name: "英文菜单名"
+        link: "菜单链接"
+        level1_menu_id: "一级菜单"
+      level3_menu:
+        name: "中文菜单名"
+        en_name: "英文菜单名"
+        link: "菜单链接"
+        level1_menu_id: "一级菜单"
+        level2_menu_id: "二级菜单"

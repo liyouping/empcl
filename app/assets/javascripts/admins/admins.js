@@ -43,5 +43,23 @@ $(document).ready(function () {
     $('[data-toggle="offcanvas"]').click(function () {
         $('#wrapper').toggleClass('toggled');
     });
+    //表单错误验证
+    if($("#errorsKey")[0] != undefined){
+        var errorsKey = $("#errorsKey").val();
+        if(errorsKey != ""){
+            var errorList = JSON.parse(errorsKey);
+            for(var key in errorList){
+                $("input[name*='["+key+"]'],select[name*='["+key+"]'],textarea[name*='["+key+"]']").parent().parent().addClass("has-error");
+                $("input[name*='["+key+"]'],select[name*='["+key+"]'],textarea[name*='["+key+"]']").parent().next("label").text(errorList[key][0]);
+            }
+        }
+    }
 });
 
+function showLink(link,urlPre) {
+    if(link == ""){return;}
+    if(link.indexOf("http://")<0 && link.indexOf("https://")<0){
+        link =urlPre+ link;
+    }
+    window.open(link);
+}

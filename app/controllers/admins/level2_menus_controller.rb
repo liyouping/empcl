@@ -4,6 +4,8 @@ class Admins::Level2MenusController < Admins::BaseController
   # GET /admins/level2_menus
   def index
     @menus = Level2Menu.all.order('position asc').page(params[:page] || 1).per(10)
+
+    @url_pre = request.protocol+request.host_with_port
   end
 
   # GET /admins/level2_menus/1
@@ -22,21 +24,34 @@ class Admins::Level2MenusController < Admins::BaseController
   # POST /admins/level2_menus
   def create
     @menu = Level2Menu.new(menu_params)
-
-    if @menu.save
-      redirect_to admins_level2_menus_url, notice: '二级菜单创建成功!'
+    if @menu.valid?
+      if @menu.save
+        redirect_to admins_level2_menus_url, notice: '二级菜单创建成功!'
+      else
+        @errors = @menu.errors.as_json(full_messages: true).to_json
+        render :new
+      end
     else
+      @errors = @menu.errors.as_json(full_messages: true).to_json
       render :new
     end
+
   end
 
   # PATCH/PUT /admins/level2_menus/1
   def update
-    if @menu.update(menu_params)
-      redirect_to admins_level2_menus_url, notice: '二级菜单更新成功!'
+    if @menu.valid?
+      if @menu.update(menu_params)
+        redirect_to admins_level2_menus_url, notice: '二级菜单更新成功!'
+      else
+        @errors = @menu.errors.as_json(full_messages: true).to_json
+        render :edit
+      end
     else
+      @errors = @menu.errors.as_json(full_messages: true).to_json
       render :edit
     end
+
   end
 
   # DELETE /admins/level2_menus/1
