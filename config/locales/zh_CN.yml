@@ -168,6 +168,9 @@ zh_CN:
       odd: 必须为单数
       required: 必须存在
       taken: 已经被使用
+      not_found: 不存在
+      not_saved: ""
+      expired: 已过期
       too_long:
         one: 过长（最长为一个字符）
         other: 过长（最长为 %{count} 个字符）

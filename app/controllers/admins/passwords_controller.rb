@@ -1,5 +1,6 @@
 class Admins::PasswordsController < Devise::PasswordsController
-  layout "admin"
+  layout "header_and_footer"
+  helper_method :getlocal
   # GET /resource/password/new
   # def new
   #   super
@@ -16,9 +17,13 @@ class Admins::PasswordsController < Devise::PasswordsController
   # end
 
   # PUT /resource/password
-  # def update
-  #   super
-  # end
+  def update
+    super
+  end
+
+  def getlocal
+    I18n.locale.to_s
+  end
 
   # protected
 
@@ -30,4 +35,5 @@ class Admins::PasswordsController < Devise::PasswordsController
   # def after_sending_reset_password_instructions_path_for(resource_name)
   #   super(resource_name)
   # end
+
 end

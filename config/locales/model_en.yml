@@ -1,9 +1,15 @@
 en:
   activerecord: 
     models:
+      admin: "Admin"
       message: "Message"
       msg_type: "Message Type"
     attributes:
+      admin:
+        id: "ID"
+        email: "Email"
+        tel_num: "TelNum"
+        name: "Name"
       message:
         id: "ID"
         name: "Name"

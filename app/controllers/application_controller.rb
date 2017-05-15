@@ -1,17 +1,20 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  helper_method :getlocal
 
-  # def set_locale
-  #   if cookies[:user_locale] && I18n.available_locales.include?(cookies[:user_locale].to_sym)
-  #     l = cookies[:user_locale].to_sym
-  #   else
-  #     l = http_accept_language.compatible_language_from(I18n.available_locales)
-  #     cookies.permanent[:user_locale] = l
-  #   end
-  #   I18n.locale = l || I18n.locale
-  # end
   def getlocal
     I18n.locale.to_s
   end
 
+  # 取得当前用户的ip地址
+  def now_ip
+    x_forwarded_ip = request.env["HTTP_X_FORWARDED_FOR"].to_s.split(',').first.to_s
+    x_forwarded_ip.strip!
+    if x_forwarded_ip.present?
+      return x_forwarded_ip
+    else
+      return request.remote_ip
+    end
+    # return request.env['HTTP_X_FORWARDED_FOR'] || request.remote_ip
+  end
 end

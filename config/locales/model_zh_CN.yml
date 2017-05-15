@@ -1,12 +1,21 @@
 zh_CN:
   activerecord: 
     models:
+      admin: "管理员"
       message: "留言消息"
       msg_type: "消息类型"
       level1_menu: "一级菜单"
       level2_menu: "二级菜单"
       level2_menu: "三级菜单"
     attributes:
+      admin:
+        id: "ID"
+        email: "Email"
+        tel_num: "手机"
+        name: "姓名"
+        password: "密码"
+        password_confirmation: "确认密码"
+        reset_password_token: "重置密码令牌"
       message:
         id: "ID"
         name: "姓名"

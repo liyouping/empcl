@@ -1,16 +1,36 @@
-<h2>Forgot your password?</h2>
+<div class="row">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= devise_error_messages! %>
+  <div class="col-md-1 col-xs-1"></div>
+  <div class="col-md-10 col-xs-10 pg-content">
+<h3>忘记密码</h3>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post ,role: "form"}) do |f| %>
+
+  <div class="form-group <%= resource.errors.empty? ? "" : "has-error" %>">
+    <%= f.label :email,"Email:" %>
+    <%= f.email_field :email, autofocus: true ,class: "form-control" %>
+    <label class="control-label"></label>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+  <div class="form-group">
+    <%= f.button "发送重置密码邮件" ,type: "button",class: "btn btn-primary save-btn",onclick: "checkForm()" %>
+    <%= link_to "返回登录","/admin/sign_in",class: "btn btn-primary back-btn" %>
   </div>
+  <input type="hidden" id="errorsKey" value="<%= resource.errors.as_json(full_messages: true).to_json %>">
 <% end %>
 
-<%= render "admins/shared/links" %>
+</div>
+  </div>
+<script type="text/javascript">
+function checkForm() {
+  if ($("#admin_email").val() == "") {
+    $("#admin_email").parent().addClass("has-error");
+    $("#admin_email").next().text("Email不能为空");
+  }else if($("#admin_email").val().indexOf("@")<0){
+    $("#admin_email").parent().addClass("has-error");
+    $("#admin_email").next().text("Email格式不正确");
+  }else {
+    $("#new_admin").submit();
+  }
+}
+</script>

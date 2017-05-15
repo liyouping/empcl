@@ -1,25 +1,20 @@
 <div class="row">
   <% if getlocal == "zh_CN" %>
-  <div class="col-md-12 col-xs-12">
-    <div class="footer">
-      <div style="display:inline-block;vertical-align:top;">
-        <a href="http://www.scgswljg.gov.cn/iciaicweb/dzbscheck.do?method=change&amp;id=51150020150604064673"><%= image_tag "scgswljg.png",alt: "网络经济主体信息" %></a>
-      </div>
-      <div style="display:inline-block">
-        <p>地址：上海市长宁区天山西路　　邮编：600000　　电话：400-000-0000　　传真：400-000-0000</p>
-        ©2007-<%= Time.now.year %>
-        **有限责任公司&nbsp;&nbsp;版权所有
-
-      </div>
+  <div class="col-md-12 col-xs-12 <%= footer_calss%>">
+    <div class="footer navbar-inverse">
+        <p>地址：上海市长宁区天山西路</p>
+        <p>邮编：600000</p>
+        <p>电话：<a href="tel:400000000">400-000-0000</a></p>
+        <p>传真：400-000-0000</p>
+        <p>CopyRight &copy; <%= Date.today.year%> 李有平 赣ICP备17001675号-1</p>
     </div>
   </div>
 <% else %>
-  <div class="col-md-12 col-xs-12">
-    <div class="footer" style="margin-top:20px;">
-      ©2007-<%= Time.now.year %>
-      Sichuan Push Acetati Co.,Ltd.&nbsp;&nbsp;All rights reserved
-      <!--&nbsp;&nbsp;<a href="/en/disclaimer" style="font-size:1em;color:#5c5c5c;">Disclaimer</a>-->
-      <!--&nbsp;&nbsp;<a href="http://www.chinaido.com" target="_blank">(Designed by Chinaido)</a></div>-->
+  <div class="col-md-12 col-xs-12 <%= footer_calss%>">
+    <div class="footer navbar-inverse">
+      <p>Address: Tianshan West Road, Shanghai, Changning District</p>
+      <p>Tel: <a href="tel:400000000">400-000-0000</a></p>
+     <p> CopyRight &copy; <%= Date.today.year%> 李有平 赣ICP备17001675号-1s</p>
       </div>
   </div>
   <% end %>

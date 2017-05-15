@@ -1,25 +1,63 @@
-<h2>Change your password</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="row">
+
+  <div class="col-md-1 col-xs-1"></div>
+  <div class="col-md-10 col-xs-10 pg-content">
+    <h3>修改密码</h3>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put ,role: "form"}) do |f| %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "off" %>
+  <div class="form-group">
+    <%= f.label :password, "新密码:" %>
+
+    <%= f.password_field :password, autofocus: true, autocomplete: "off",class: "form-control",placeholder: "数字、字母、下划线至少6位" %>
+    <label class="control-label"></label>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+  <div class="form-group">
+    <%= f.label :password_confirmation, "确认密码:" %>
+    <%= f.password_field :password_confirmation, autocomplete: "off",class: "form-control" %>
+    <label class="control-label"></label>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Change my password" %>
+  <div class="form-group">
+    <%= f.button "修改" ,type: "button",class: "btn btn-primary save-btn",onclick: "checkForm()" %>
   </div>
+    <input type="hidden" id="errorsKey" value="<%= resource.errors.as_json(full_messages: true).to_json %>">
 <% end %>
+</div>
+  </div>
+<%#= render "admins/shared/links" %>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function () {
+    var errorList = JSON.parse($("#errorsKey").val());
+    if(errorList['reset_password_token'] != undefined &&errorList['reset_password_token'][0]!=""){
+      alert(errorList['reset_password_token'][0]);
+      location.href="/admin/sign_in";
+    }
+  });
 
-<%= render "admins/shared/links" %>
+    function checkForm() {
+      var pwd = $("#admin_password").val();
+      var pwdConfirm = $("#admin_password_confirmation").val();
+      if(pwd == ""){
+        $("#admin_password").parent().addClass("has-error");
+        $("#admin_password").next().text("请输入新密码");
+        $("#admin_password").focus();
+        return;
+      }
+      if(pwd.length<6){
+        $("#admin_password").parent().addClass("has-error");
+        $("#admin_password").next().text("密码必须为6-20位数字、字母、下划线组合");
+        $("#admin_password").focus();
+      }
+      if(pwdConfirm != pwd){
+        $("#admin_password_confirmation").parent().addClass("has-error");
+        $("#admin_password_confirmation").next().text("确认密码和新密码不一致");
+        $("#admin_password_confirmation").focus();
+        return;
+      }
+      $("form").submit();
+    }
+</script>

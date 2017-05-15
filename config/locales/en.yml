@@ -171,6 +171,9 @@ en:
       odd: must be odd
       required: must exist
       taken: has already been taken
+      not_found: Not found
+      not_saved: ""
+      expired: Expired
       too_long:
         one: is too long (maximum is 1 character)
         other: is too long (maximum is %{count} characters)
