@@ -2,7 +2,10 @@
   <div class="col-lg-1 col-xs-1"></div>
   <div class="col-lg-10 col-xs-10">
     <h3 class="page-header">管理员信息</h3>
+    <p><span>账户:</span><%=@admin.email %></p>
+    <p><span>姓名:</span><%= @admin.name %></p>
 
+    <%= link_to '<i class="fa fa-fw fa-edit"></i>修改'.html_safe, edit_admins_admin_path(@admin), class: "btn btn-primary" %>
   </div>
   <div class="col-lg-1 col-xs-1"></div>
 </div>

@@ -1,7 +1,7 @@
 <%= render partial: "common/notice_or_error" %>
 <div class="row">
   <div class="col-lg-12 col-xs-12">
-    <h3 class="page-header">页面库列表</h3>
+    <h3 class="page-header">页面库列表&nbsp;<%= link_to '<i class="fa fa-fw fa-plus"></i>新增'.html_safe, new_admins_page_path, class: "btn btn-primary" %></h3>
     <div class="paginate-box">
       <span>共:<%= @pages.total_count %>条</span>
       <%= paginate @pages %>

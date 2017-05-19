@@ -11,6 +11,7 @@
       <a class="navbar-brand" href="<%=root_url %>"><%= image_tag "logo.png"%></a>
     </div>
     <div class="collapse navbar-collapse" id="example-navbar-collapse">
+      <div class="menu-box">
       <ul class="nav navbar-nav">
         <% local = getlocal %>
         <% Level1Menu.all.each do |m| %>
@@ -80,6 +81,7 @@
         <% end %>
         <li><%= link_to t("version"),@change_url ,id: "change-version" %></li>
       </ul>
+      </div>
     </div>
   </div>
 </nav>

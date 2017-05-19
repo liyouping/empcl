@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     root 'messages#index'
     resources :admins do
       collection do
-        get "edit_pwd"
-        post "update_pwd"
+        get "edit_pwd/:id" => 'admins#edit_pwd'
+        patch "update_pwd/:id" => 'admins#update_pwd'
       end
     end
 

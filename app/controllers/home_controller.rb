@@ -15,6 +15,7 @@ class HomeController < BaseController
     if @message.valid?
       if @message.save
         flash[:notice] = t(:contact_success)
+        UserMailer.send_msg_to_me(@message).deliver_now
       end
       redirect_to action: 'contact'
     else

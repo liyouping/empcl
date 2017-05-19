@@ -1,0 +1,12 @@
+
+<div>
+  <h3>留言通知</h3>
+  <p><span>姓名:</span><%= @msg.name %></p>
+  <%if @msg.company.present? %>
+  <p><span>公司/机构名称:</span><%= @msg.company %></p>
+  <% end %>
+  <p><span>联络电话:</span><%= @msg.tel_num %></p>
+  <p><span>电子邮件:</span><%= @msg.email %></p>
+  <p><span>主题:</span><%= @msg.msg_type.name %></p>
+  <p><span>详细内容:</span><%= @msg.content %></p>
+</div>

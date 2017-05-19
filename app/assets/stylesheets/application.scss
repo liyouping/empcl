@@ -18,7 +18,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 /*使用bootstrap*/
-@media (min-width: 768px){
+@media (min-width: 992px){
 	.container-fluid > .navbar-header{
 		padding-right: 480px;
 	}
@@ -63,7 +63,9 @@
   .footer p{
     display: block;
   }
-
+  .col-md-10{
+    padding: 0;
+  }
 }
 
 /*三级菜单*/

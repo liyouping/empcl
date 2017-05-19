@@ -13,6 +13,7 @@ zh_CN:
         email: "Email"
         tel_num: "手机"
         name: "姓名"
+        old_password: "旧密码"
         password: "密码"
         password_confirmation: "确认密码"
         reset_password_token: "重置密码令牌"

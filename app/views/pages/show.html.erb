@@ -2,13 +2,14 @@
 
   <div class="col-md-1 col-xs-1"></div>
   <div class="col-md-10 col-xs-10 pg-content">
+    <div class="pg-box">
     <h3 class="pg-title"><%= @page.title  %></h3>
     <% if getlocal == "zh_CN" %>
         <%= @page.content.html_safe %>
     <% elsif getlocal == "en" %>
       <%= @page.en_content.html_safe %>
     <% end %>
-
+    </div>
   </div>
   <div class="col-md-1 col-xs-1"></div>
 </div>

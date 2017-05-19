@@ -45,7 +45,7 @@ module Empcl
     config.assets.precompile += %w( .svg .eot .woff .ttf )
 
     Rails.application.config.assets.precompile += %w( admins/admins.css )
-    Rails.application.config.assets.precompile += %w( admins/admins.js )
+    Rails.application.config.assets.precompile += %w( /admins/admins.js )
     #国际化
     # 指定 I18n 库搜索翻译文件的路径
     I18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}').to_s]
